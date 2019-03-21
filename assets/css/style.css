@@ -1,0 +1,38 @@
+/* toggle
+----------------------------------------------- */
+.azrcrv-tsh-toggle, .azrcrv-tsh-toggle-open, .azrcrv-tsh-toggle-active, .azrcrv-tsh-toggle-open-active {
+    margin: 5px 0px 0px 0px !important;
+	border: 1px solid #007fff;
+    font-weight:600;
+    font-size: 14px;
+    padding: 10px 10px 10px 30px;
+    background-repeat: no-repeat;
+	background-position: 10px 10px;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+.azrcrv-tsh-toggle {
+    background-image: url('images/azure-plus.png') ;
+}
+.azrcrv-tsh-toggle-open {
+    background-image: url('images/azure-plus.png') !important;
+}
+.azrcrv-tsh-toggle-active {
+    background-image: url('images/azure-minus.png') !important;
+}
+.azrcrv-tsh-toggle-open-active {
+    background-image: url('images/azure-minus.png');
+}
+.azrcrv-tsh-toggle a,.azrcrv-tsh-toggle-open a, .azrcrv-tsh-toggle-open-active a {
+	color: #000;
+}
+.azrcrv-tsh-toggle-container, .azrcrv-tsh-toggle-container-open {
+	margin: auto;
+    margin-bottom: 5px !important;
+	padding: 5px 15px;
+	border-right: 1px solid #007fff;
+	border-bottom: 1px solid #007fff;
+	border-left: 1px solid #007fff;
+	overflow: auto;
+}
