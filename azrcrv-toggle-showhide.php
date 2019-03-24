@@ -6,7 +6,7 @@
  * Version: 1.0.0
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
- * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide
+ * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
  * Text Domain: toggle-showhide
  * Domain Path: /languages
  * ------------------------------------------------------------------------------
