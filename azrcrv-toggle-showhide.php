@@ -307,7 +307,7 @@ function azrcrv_tsh_display_options(){
 				<input name="page_options" type="hidden" value="tsh_suffix" />
 				
 				<!-- Adding security through hidden referrer field -->
-				<?php wp_nonce_field('azrcrv-tsh-nonce', 'azrcrv-tsh-nonce'); ?>
+				<?php wp_nonce_field('azrcrv-tsh', 'azrcrv-tsh-nonce'); ?>
 				
 				<table class="form-table">
 				
@@ -469,7 +469,7 @@ function azrcrv_tsh_save_options(){
 	}
 	
 	// Check that nonce field created in configuration form is present
-	if (! empty($_POST) && check_admin_referer('azrcrv-tsh-nonce', 'azrcrv-tsh-nonce')){
+	if (! empty($_POST) && check_admin_referer('azrcrv-tsh', 'azrcrv-tsh-nonce')){
 		settings_fields('azrcrv-tsh');
 		
 		// Retrieve original plugin options array
@@ -639,7 +639,7 @@ function azrcrv_tsh_network_settings(){
 				<input name="page_options" type="hidden" value="suffix" />
 				
 				<!-- Adding security through hidden referrer field -->
-				<?php wp_nonce_field('azrcrv-tsh-nonce', 'azrcrv-tsh-nonce'); ?>
+				<?php wp_nonce_field('azrcrv-tsh', 'azrcrv-tsh-nonce'); ?>
 				<table class="form-table">
 				
 				<tr><td colspan=2>
@@ -787,7 +787,7 @@ function azrcrv_tsh_save_network_options(){
 		wp_die(esc_html__('You do not have permissions to perform this action', 'toggle-showhide'));
 	}
 	
-	if (! empty($_POST) && check_admin_referer('azrcrv-tsh-nonce', 'azrcrv-tsh-nonce')){
+	if (! empty($_POST) && check_admin_referer('azrcrv-tsh', 'azrcrv-tsh-nonce')){
 		// Retrieve original plugin options array
 		$options = get_site_option('azrcrv-tsh');
 
