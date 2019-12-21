@@ -449,7 +449,7 @@ function azrcrv_tsh_display_options(){
 				</td></tr>
 				
 				</table>
-				<input type="submit" value="Submit" class="button-primary"/>
+				<input type="submit" value="<?php esc_html_e('Submit', 'toggle-showhide'); ?>" class="button-primary"/>
 			</form>
 		</fieldset>
 	</div>
