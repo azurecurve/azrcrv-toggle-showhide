@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-12-21T23:49:35+03:00\n"
+"POT-Creation-Date: 2019-12-22T01:21:52+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.2.0\n"
 "X-Domain: toggle-showhide\n"
@@ -53,11 +53,13 @@ msgstr ""
 msgid "Settings have been saved."
 msgstr ""
 
+#. translators: %s is a plugin name.
 #: azrcrv-toggle-showhide.php:315
 #: azrcrv-toggle-showhide.php:646
 msgid "To use the toggle in a widget, you will need a plugin (such as %s) which enables shortcodes in widgets."
 msgstr ""
 
+#. translators: %s is a plugin name.
 #: azrcrv-toggle-showhide.php:316
 msgid "If the options are blank then the defaults in the plugin's CSS will be used."
 msgstr ""
@@ -77,6 +79,7 @@ msgstr ""
 msgid "Title Tag"
 msgstr ""
 
+#. translators: %s is a html tag name.
 #: azrcrv-toggle-showhide.php:329
 #: azrcrv-toggle-showhide.php:652
 msgid "Set default title tag (e.g. h3); if not set, %s will be used."
@@ -260,6 +263,10 @@ msgstr ""
 #: azrcrv-toggle-showhide.php:766
 #: azrcrv-toggle-showhide.php:767
 msgid "Allow shortcodes within toggle?"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:452
+msgid "Submit"
 msgstr ""
 
 #: azrcrv-toggle-showhide.php:468

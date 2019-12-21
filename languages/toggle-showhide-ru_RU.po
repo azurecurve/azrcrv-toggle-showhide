@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Toggle Show/Hide\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/azrcrv-toggle-"
 "showhide\n"
-"POT-Creation-Date: 2019-12-22 00:22+0300\n"
-"PO-Revision-Date: 2019-12-22 00:24+0300\n"
+"POT-Creation-Date: 2019-12-22T01:21:52+03:00\n"
+"PO-Revision-Date: 2019-12-22 01:23+0300\n"
 "Last-Translator: Ilya Ivanov <czweerwolf@gmail.com>\n"
 "Language-Team: https://translate.azurecurve.co.uk/\n"
 "Language: ru\n"
@@ -20,6 +20,30 @@ msgstr ""
 "X-Poedit-SearchPath-0: azrcrv-toggle-showhide.php\n"
 "X-Poedit-SearchPath-1: .\n"
 
+#. Plugin Name of the plugin
+#: azrcrv-toggle-showhide.php:275 azrcrv-toggle-showhide.php:603
+msgid "Toggle Show/Hide"
+msgstr "Toggle Show/Hide"
+
+#. Plugin URI of the plugin
+msgid ""
+"https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/"
+msgstr ""
+"https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/"
+
+#. Description of the plugin
+msgid "Toggle shortcode can be used to show/hide content."
+msgstr ""
+"Шорткод переключателя можно использовать, чтобы показать/скрыть содержимое."
+
+#. Author of the plugin
+msgid "azurecurve"
+msgstr "azurecurve"
+
+#. Author URI of the plugin
+msgid "https://development.azurecurve.co.uk/classicpress-plugins/"
+msgstr "https://development.azurecurve.co.uk/classicpress-plugins/"
+
 #: azrcrv-toggle-showhide.php:257
 msgid "Settings"
 msgstr "Настройки"
@@ -27,10 +51,6 @@ msgstr "Настройки"
 #: azrcrv-toggle-showhide.php:274 azrcrv-toggle-showhide.php:602
 msgid "Toggle Show/Hide Settings"
 msgstr "Настройки Toggle Show/Hide"
-
-#: azrcrv-toggle-showhide.php:275 azrcrv-toggle-showhide.php:603
-msgid "Toggle Show/Hide"
-msgstr "Toggle Show/Hide"
 
 #: azrcrv-toggle-showhide.php:289
 msgid "You do not have sufficient permissions to access this page."
@@ -40,8 +60,8 @@ msgstr "У вас недостаточно прав для доступа к э�
 msgid "Settings have been saved."
 msgstr "Настройки сохранены."
 
+#. translators: %s is a plugin name.
 #: azrcrv-toggle-showhide.php:315 azrcrv-toggle-showhide.php:646
-#, php-format
 msgid ""
 "To use the toggle in a widget, you will need a plugin (such as %s) which "
 "enables shortcodes in widgets."
@@ -49,6 +69,7 @@ msgstr ""
 "Чтобы использовать переключатель в виджете, вам понадобится плагин "
 "(наподобие %s), который разрешает шорткоды в виджетах."
 
+#. translators: %s is a plugin name.
 #: azrcrv-toggle-showhide.php:316
 msgid ""
 "If the options are blank then the defaults in the plugin's CSS will be used."
@@ -70,8 +91,8 @@ msgstr "Отключить изображения в заголовке пере
 msgid "Title Tag"
 msgstr "Тег заголовка"
 
+#. translators: %s is a html tag name.
 #: azrcrv-toggle-showhide.php:329 azrcrv-toggle-showhide.php:652
-#, php-format
 msgid "Set default title tag (e.g. h3); if not set, %s will be used."
 msgstr ""
 "Укажите тег заголовка по умолчанию (например, h3). Если не заполнено, будет "
@@ -92,7 +113,6 @@ msgid "Width"
 msgstr "Ширина"
 
 #: azrcrv-toggle-showhide.php:339 azrcrv-toggle-showhide.php:662
-#, php-format
 msgid "Set default width (e.g. 65% or 500px)"
 msgstr "Установите ширину по умолчанию (например, «65 %» или «500 px»)"
 
@@ -237,10 +257,14 @@ msgstr "Разрешить шорткоды?"
 msgid "Allow shortcodes within toggle?"
 msgstr "Разрешить шорткоды в переключателе?"
 
+#: azrcrv-toggle-showhide.php:452
+msgid "Submit"
+msgstr "Отправить"
+
 #: azrcrv-toggle-showhide.php:468 azrcrv-toggle-showhide.php:619
 #: azrcrv-toggle-showhide.php:787
 msgid "You do not have permissions to perform this action"
-msgstr "У вас нет прав на выполнение этого действия."
+msgstr "У вас нет прав на выполнение этого действия"
 
 #: azrcrv-toggle-showhide.php:634
 msgid "Network Settings have been saved."
@@ -266,22 +290,6 @@ msgid "Set default bg_text (e.g. 1px solid #00F000)"
 msgstr ""
 "Укажите цвет фона основного текста по умолчанию (например, «1px solid "
 "#00F000»)"
-
-#~ msgid ""
-#~ "https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/"
-#~ msgstr ""
-#~ "https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/"
-
-#~ msgid "Toggle shortcode can be used to show/hide content."
-#~ msgstr ""
-#~ "Шорткод переключателя можно использовать, чтобы показать/скрыть "
-#~ "содержимое."
-
-#~ msgid "azurecurve"
-#~ msgstr "azurecurve"
-
-#~ msgid "https://development.azurecurve.co.uk/classicpress-plugins/"
-#~ msgstr "https://development.azurecurve.co.uk/classicpress-plugins/"
 
 #, php-format
 #~ msgid ""
