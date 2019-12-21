@@ -312,7 +312,7 @@ function azrcrv_tsh_display_options(){
 				<table class="form-table">
 				
 				<tr><td colspan=2>
-					<p><?php printf(esc_html__('To use the toggle in a widget, you will need a plugin (such as %s) which enables shortcodes in widgets.', 'toggle-showhide'), '<a href="https://development.azurecurve.co.uk/classicpress-plugins/shortcodes-in-widgets/">Shortcodes in Widgets</a>'); ?></p>
+					<p><?php printf(/* translators: %s is a plugin name. */ esc_html__('To use the toggle in a widget, you will need a plugin (such as %s) which enables shortcodes in widgets.', 'toggle-showhide'), '<a href="https://development.azurecurve.co.uk/classicpress-plugins/shortcodes-in-widgets/">Shortcodes in Widgets</a>'); ?></p>
 					<p><?php esc_html_e('If the options are blank then the defaults in the plugin\'s CSS will be used.', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
@@ -326,7 +326,7 @@ function azrcrv_tsh_display_options(){
 				
 				<tr><th scope="row"><label for="title_tag"><?php esc_html_e('Title Tag', 'toggle-showhide'); ?></label></th><td>
 					<input type="text" name="title_tag" value="<?php echo esc_html(stripslashes($options['title_tag'])); ?>" class="small-text" />
-					<p class="description"><?php printf(esc_html__('Set default title tag (e.g. h3); if not set, %s will be used.', 'toggle-showhide'), 'h3'); ?></p>
+					<p class="description"><?php printf(/* translators: %s is a html tag name. */ esc_html__('Set default title tag (e.g. h3); if not set, %s will be used.', 'toggle-showhide'), 'h3'); ?></p>
 				</td></tr>
 				
 				<tr><th scope="row"><label for="title"><?php esc_html_e('Title', 'toggle-showhide'); ?></label></th><td>
