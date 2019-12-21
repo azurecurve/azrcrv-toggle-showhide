@@ -1,30 +1,48 @@
+# Copyright (C) 2019 azurecurve
+# This file is distributed under the same license as the Toggle Show/Hide plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Toggle Show/Hide\n"
-"POT-Creation-Date: 2019-02-24 18:27+0000\n"
-"PO-Revision-Date: 2019-02-24 18:28+0000\n"
-"Last-Translator: \n"
-"Language-Team: https://translate.azurecurve.co.uk/\n"
-"Language: en_US\n"
+"Project-Id-Version: Toggle Show/Hide 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/azrcrv-toggle-showhide\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
-"X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
-"X-Poedit-SearchPath-0: azrcrv-toggle-showhide.php\n"
+"POT-Creation-Date: 2019-12-21T23:49:35+03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.2.0\n"
+"X-Domain: toggle-showhide\n"
+
+#. Plugin Name of the plugin
+#: azrcrv-toggle-showhide.php:275
+#: azrcrv-toggle-showhide.php:603
+msgid "Toggle Show/Hide"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Toggle shortcode can be used to show/hide content."
+msgstr ""
+
+#. Author of the plugin
+msgid "azurecurve"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://development.azurecurve.co.uk/classicpress-plugins/"
+msgstr ""
 
 #: azrcrv-toggle-showhide.php:257
 msgid "Settings"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:274 azrcrv-toggle-showhide.php:602
+#: azrcrv-toggle-showhide.php:274
+#: azrcrv-toggle-showhide.php:602
 msgid "Toggle Show/Hide Settings"
-msgstr ""
-
-#: azrcrv-toggle-showhide.php:275 azrcrv-toggle-showhide.php:603
-msgid "Toggle Show/Hide"
 msgstr ""
 
 #: azrcrv-toggle-showhide.php:289
@@ -36,181 +54,216 @@ msgid "Settings have been saved."
 msgstr ""
 
 #: azrcrv-toggle-showhide.php:315
-#, php-format
-msgid ""
-"To use the toggle in a widget, you will need a plugin such as %s which "
-"enables shortcodes in widgets."
+#: azrcrv-toggle-showhide.php:646
+msgid "To use the toggle in a widget, you will need a plugin (such as %s) which enables shortcodes in widgets."
 msgstr ""
 
 #: azrcrv-toggle-showhide.php:316
-msgid ""
-"If the options are blank then the defaults in the plugin's CSS will be used."
+msgid "If the options are blank then the defaults in the plugin's CSS will be used."
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:321 azrcrv-toggle-showhide.php:440
+#: azrcrv-toggle-showhide.php:320
+msgid "Use multisite options instead of the site options below?"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:321
+#: azrcrv-toggle-showhide.php:440
 #: azrcrv-toggle-showhide.php:760
 msgid "Disable images in toggle title?"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:327 azrcrv-toggle-showhide.php:650
+#: azrcrv-toggle-showhide.php:327
+#: azrcrv-toggle-showhide.php:650
 msgid "Title Tag"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:329 azrcrv-toggle-showhide.php:652
-#, php-format
+#: azrcrv-toggle-showhide.php:329
+#: azrcrv-toggle-showhide.php:652
 msgid "Set default title tag (e.g. h3); if not set, %s will be used."
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:332 azrcrv-toggle-showhide.php:655
+#: azrcrv-toggle-showhide.php:332
+#: azrcrv-toggle-showhide.php:655
 msgid "Title"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:334 azrcrv-toggle-showhide.php:657
+#: azrcrv-toggle-showhide.php:334
+#: azrcrv-toggle-showhide.php:657
 msgid "Set default title text (e.g. Click here to toggle show/hide)"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:337 azrcrv-toggle-showhide.php:660
+#: azrcrv-toggle-showhide.php:337
+#: azrcrv-toggle-showhide.php:660
 msgid "Width"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:339 azrcrv-toggle-showhide.php:662
-#, php-format
+#: azrcrv-toggle-showhide.php:339
+#: azrcrv-toggle-showhide.php:662
 msgid "Set default width (e.g. 65% or 500px)"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:342 azrcrv-toggle-showhide.php:665
+#: azrcrv-toggle-showhide.php:342
+#: azrcrv-toggle-showhide.php:665
 msgid "Border"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:344 azrcrv-toggle-showhide.php:667
+#: azrcrv-toggle-showhide.php:344
+#: azrcrv-toggle-showhide.php:667
 msgid "Set default border (e.g. 1px solid #00F000)"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:347 azrcrv-toggle-showhide.php:670
+#: azrcrv-toggle-showhide.php:347
+#: azrcrv-toggle-showhide.php:670
 msgid "Title Color"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:349 azrcrv-toggle-showhide.php:672
+#: azrcrv-toggle-showhide.php:349
+#: azrcrv-toggle-showhide.php:672
 msgid "Set default title color (e.g. #000)"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:352 azrcrv-toggle-showhide.php:675
+#: azrcrv-toggle-showhide.php:352
+#: azrcrv-toggle-showhide.php:675
 msgid "Title Background Color"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:354 azrcrv-toggle-showhide.php:677
-msgid "Set default title background color (e.g. 1px solid #00F000)"
+#: azrcrv-toggle-showhide.php:354
+msgid "Set default title background color (e.g. #00F000)"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:357 azrcrv-toggle-showhide.php:680
+#: azrcrv-toggle-showhide.php:357
+#: azrcrv-toggle-showhide.php:680
 msgid "Title Font Family"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:359 azrcrv-toggle-showhide.php:682
+#: azrcrv-toggle-showhide.php:359
+#: azrcrv-toggle-showhide.php:682
 msgid "Set default title font family (e.g. Arial, Calibri)"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:362 azrcrv-toggle-showhide.php:685
+#: azrcrv-toggle-showhide.php:362
+#: azrcrv-toggle-showhide.php:685
 msgid "Title Font Size"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:364 azrcrv-toggle-showhide.php:687
+#: azrcrv-toggle-showhide.php:364
+#: azrcrv-toggle-showhide.php:687
 msgid "Set default title font size (e.g. 1.2em or 14px)"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:367 azrcrv-toggle-showhide.php:690
+#: azrcrv-toggle-showhide.php:367
+#: azrcrv-toggle-showhide.php:690
 msgid "Title Font Weight"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:369 azrcrv-toggle-showhide.php:692
+#: azrcrv-toggle-showhide.php:369
+#: azrcrv-toggle-showhide.php:692
 msgid "Set default title font weight (e.g. 600)"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:372 azrcrv-toggle-showhide.php:695
+#: azrcrv-toggle-showhide.php:372
+#: azrcrv-toggle-showhide.php:695
 msgid "Text Color"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:374 azrcrv-toggle-showhide.php:697
+#: azrcrv-toggle-showhide.php:374
+#: azrcrv-toggle-showhide.php:697
 msgid "Set default text color (e.g. #000)"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:377 azrcrv-toggle-showhide.php:700
+#: azrcrv-toggle-showhide.php:377
+#: azrcrv-toggle-showhide.php:700
 msgid "Text Background Color"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:379 azrcrv-toggle-showhide.php:702
-msgid "Set default bg_text (e.g. 1px solid #00F000)"
+#: azrcrv-toggle-showhide.php:379
+msgid "Set default text background color (e.g. #00F000)"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:382 azrcrv-toggle-showhide.php:705
+#: azrcrv-toggle-showhide.php:382
+#: azrcrv-toggle-showhide.php:705
 msgid "Text Font Family"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:384 azrcrv-toggle-showhide.php:707
+#: azrcrv-toggle-showhide.php:384
+#: azrcrv-toggle-showhide.php:707
 msgid "Set default text font family (e.g. Arial, Calibri)"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:387 azrcrv-toggle-showhide.php:710
+#: azrcrv-toggle-showhide.php:387
+#: azrcrv-toggle-showhide.php:710
 msgid "Text Font Size"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:389 azrcrv-toggle-showhide.php:712
+#: azrcrv-toggle-showhide.php:389
+#: azrcrv-toggle-showhide.php:712
 msgid "Set default text font size (e.g. 1.2em or 14px)"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:392 azrcrv-toggle-showhide.php:715
+#: azrcrv-toggle-showhide.php:392
+#: azrcrv-toggle-showhide.php:715
 msgid "Text Font Weight"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:394 azrcrv-toggle-showhide.php:717
+#: azrcrv-toggle-showhide.php:394
+#: azrcrv-toggle-showhide.php:717
 msgid "Set default text font weight (e.g. 600)"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:397 azrcrv-toggle-showhide.php:720
+#: azrcrv-toggle-showhide.php:397
+#: azrcrv-toggle-showhide.php:720
 msgid "Image Open"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:414 azrcrv-toggle-showhide.php:735
+#: azrcrv-toggle-showhide.php:414
+#: azrcrv-toggle-showhide.php:735
 msgid "Image Close"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:431 azrcrv-toggle-showhide.php:751
+#: azrcrv-toggle-showhide.php:431
+#: azrcrv-toggle-showhide.php:751
 msgid "Image Location"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:433 azrcrv-toggle-showhide.php:753
+#: azrcrv-toggle-showhide.php:433
+#: azrcrv-toggle-showhide.php:753
 msgid "Left"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:434 azrcrv-toggle-showhide.php:754
+#: azrcrv-toggle-showhide.php:434
+#: azrcrv-toggle-showhide.php:754
 msgid "Right"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:436 azrcrv-toggle-showhide.php:756
-msgid ""
-"Select whether the toggle image should be displayed to the left or right."
+#: azrcrv-toggle-showhide.php:436
+#: azrcrv-toggle-showhide.php:756
+msgid "Select whether the toggle image should be displayed to the left or right."
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:439 azrcrv-toggle-showhide.php:759
+#: azrcrv-toggle-showhide.php:439
+#: azrcrv-toggle-showhide.php:759
 msgid "Disable Images?"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:441 azrcrv-toggle-showhide.php:761
-msgid ""
-"Disable images in toggle title? Override setting by putting disable_image=0 "
-"in toggle."
+#: azrcrv-toggle-showhide.php:441
+#: azrcrv-toggle-showhide.php:761
+msgid "Disable images in toggle title? Override setting by putting disable_image=0 in toggle."
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:445 azrcrv-toggle-showhide.php:765
+#: azrcrv-toggle-showhide.php:445
+#: azrcrv-toggle-showhide.php:765
 msgid "Allow Shortcodes?"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:446 azrcrv-toggle-showhide.php:447
-#: azrcrv-toggle-showhide.php:766 azrcrv-toggle-showhide.php:767
+#: azrcrv-toggle-showhide.php:446
+#: azrcrv-toggle-showhide.php:447
+#: azrcrv-toggle-showhide.php:766
+#: azrcrv-toggle-showhide.php:767
 msgid "Allow shortcodes within toggle?"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:468 azrcrv-toggle-showhide.php:619
+#: azrcrv-toggle-showhide.php:468
+#: azrcrv-toggle-showhide.php:619
 #: azrcrv-toggle-showhide.php:787
 msgid "You do not have permissions to perform this action"
 msgstr ""
@@ -219,16 +272,14 @@ msgstr ""
 msgid "Network Settings have been saved."
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:646
-#, php-format
-msgid ""
-"To use the toggle in a widget, you will need a plugin (such as %s which "
-"enables shortcodes in widgets."
+#: azrcrv-toggle-showhide.php:647
+msgid "If multisite is being used these options will be used when Use Multisite enabled in Site Options; if the options are blank the defaults in the plugin's CSS will be used."
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:647
-msgid ""
-"If multisite is being used these options will be used when Use Multisite "
-"enabled in Site Options; if the options are blank the defaults in the "
-"plugin's CSS will be used."
+#: azrcrv-toggle-showhide.php:677
+msgid "Set default title background color (e.g. 1px solid #00F000)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:702
+msgid "Set default bg_text (e.g. 1px solid #00F000)"
 msgstr ""
