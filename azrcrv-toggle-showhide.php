@@ -351,7 +351,7 @@ function azrcrv_tsh_display_options(){
 				
 				<tr><th scope="row"><label for="bg_title"><?php esc_html_e('Title Background Color', 'toggle-showhide'); ?></label></th><td>
 					<input type="text" name="bg_title" value="<?php echo esc_html(stripslashes($options['bg_title'])); ?>" class="regular-text" />
-					<p class="description"><?php esc_html_e('Set default title background color (e.g. 1px solid #00F000)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default title background color (e.g. #00F000)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
 				<tr><th scope="row"><label for="title_font"><?php esc_html_e('Title Font Family', 'toggle-showhide'); ?></label></th><td>
@@ -376,7 +376,7 @@ function azrcrv_tsh_display_options(){
 				
 				<tr><th scope="row"><label for="bg_text"><?php esc_html_e('Text Background Color', 'toggle-showhide'); ?></label></th><td>
 					<input type="text" name="bg_text" value="<?php echo esc_html(stripslashes($options['bg_text'])); ?>" class="regular-text" />
-					<p class="description"><?php esc_html_e('Set default bg_text (e.g. 1px solid #00F000)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default text background color (e.g. #00F000)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
 				<tr><th scope="row"><label for="text_font"><?php esc_html_e('Text Font Family', 'toggle-showhide'); ?></label></th><td>
