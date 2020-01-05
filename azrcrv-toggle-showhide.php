@@ -312,7 +312,7 @@ function azrcrv_tsh_display_options(){
 				<table class="form-table">
 				
 				<tr><td colspan=2>
-					<p><?php sprintf(esc_html_e('To use the toggle in a widget, you will need a plugin such as %s which enables shortcodes in widgets.', 'toggle-showhide'), '<a href="https://development.azurecurve.co.uk/classicpress-plugins/shortcodes-in-widgets/">Shortcodes in Widgets</a>'); ?></p>
+					<p><?php printf(/* translators: %s is a plugin name. */ esc_html__('To use the toggle in a widget, you will need a plugin (such as %s) which enables shortcodes in widgets.', 'toggle-showhide'), '<a href="https://development.azurecurve.co.uk/classicpress-plugins/shortcodes-in-widgets/">Shortcodes in Widgets</a>'); ?></p>
 					<p><?php esc_html_e('If the options are blank then the defaults in the plugin\'s CSS will be used.', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
@@ -326,7 +326,7 @@ function azrcrv_tsh_display_options(){
 				
 				<tr><th scope="row"><label for="title_tag"><?php esc_html_e('Title Tag', 'toggle-showhide'); ?></label></th><td>
 					<input type="text" name="title_tag" value="<?php echo esc_html(stripslashes($options['title_tag'])); ?>" class="small-text" />
-					<p class="description"><?php sprintf(esc_html_e('Set default title tag (e.g. h3); if not set, %s will be used.', 'toggle-showhide'), 'h3'); ?></p>
+					<p class="description"><?php printf(/* translators: %s is a html tag name. */ esc_html__('Set default title tag (e.g. h3); if not set, %s will be used.', 'toggle-showhide'), 'h3'); ?></p>
 				</td></tr>
 				
 				<tr><th scope="row"><label for="title"><?php esc_html_e('Title', 'toggle-showhide'); ?></label></th><td>
@@ -351,7 +351,7 @@ function azrcrv_tsh_display_options(){
 				
 				<tr><th scope="row"><label for="bg_title"><?php esc_html_e('Title Background Color', 'toggle-showhide'); ?></label></th><td>
 					<input type="text" name="bg_title" value="<?php echo esc_html(stripslashes($options['bg_title'])); ?>" class="regular-text" />
-					<p class="description"><?php esc_html_e('Set default title background color (e.g. 1px solid #00F000)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default title background color (e.g. #00F000)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
 				<tr><th scope="row"><label for="title_font"><?php esc_html_e('Title Font Family', 'toggle-showhide'); ?></label></th><td>
@@ -376,7 +376,7 @@ function azrcrv_tsh_display_options(){
 				
 				<tr><th scope="row"><label for="bg_text"><?php esc_html_e('Text Background Color', 'toggle-showhide'); ?></label></th><td>
 					<input type="text" name="bg_text" value="<?php echo esc_html(stripslashes($options['bg_text'])); ?>" class="regular-text" />
-					<p class="description"><?php esc_html_e('Set default bg_text (e.g. 1px solid #00F000)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default text background color (e.g. #00F000)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
 				<tr><th scope="row"><label for="text_font"><?php esc_html_e('Text Font Family', 'toggle-showhide'); ?></label></th><td>
@@ -449,7 +449,7 @@ function azrcrv_tsh_display_options(){
 				</td></tr>
 				
 				</table>
-				<input type="submit" value="Submit" class="button-primary"/>
+				<input type="submit" value="<?php esc_html_e('Submit', 'toggle-showhide'); ?>" class="button-primary"/>
 			</form>
 		</fieldset>
 	</div>
@@ -643,13 +643,13 @@ function azrcrv_tsh_network_settings(){
 				<table class="form-table">
 				
 				<tr><td colspan=2>
-					<p><?php sprintf(esc_html_e('To use the toggle in a widget, you will need a plugin (such as %s which enables shortcodes in widgets.', 'toggle-showhide'), '<a href="https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/">Shortcodes in Widgets</a>'); ?></p>
+					<p><?php printf(esc_html__('To use the toggle in a widget, you will need a plugin (such as %s) which enables shortcodes in widgets.', 'toggle-showhide'), '<a href="https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/">Shortcodes in Widgets</a>'); ?></p>
 					<p><?php esc_html_e('If multisite is being used these options will be used when Use Multisite enabled in Site Options; if the options are blank the defaults in the plugin\'s CSS will be used.', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
 				<tr><th scope="row"><label for="title_tag"><?php esc_html_e('Title Tag', 'toggle-showhide'); ?></label></th><td>
 					<input type="text" name="title_tag" value="<?php echo esc_html(stripslashes($options['title_tag'])); ?>" class="small-text" />
-					<p class="description"><?php sprintf(esc_html_e('Set default title tag (e.g. h3); if not set, %s will be used.', 'toggle-showhide'), 'h3'); ?></p>
+					<p class="description"><?php printf(esc_html__('Set default title tag (e.g. h3); if not set, %s will be used.', 'toggle-showhide'), 'h3'); ?></p>
 				</td></tr>
 				
 				<tr><th scope="row"><label for="title"><?php esc_html_e('Title', 'toggle-showhide'); ?></label></th><td>
