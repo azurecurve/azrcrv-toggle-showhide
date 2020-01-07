@@ -1,7 +1,8 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Toggle Show/Hide\n"
-"POT-Creation-Date: 2019-02-24 18:27+0000\n"
+"POT-Creation-Date: 2020-01-05 13:11+0000\n"
 "PO-Revision-Date: 2019-02-24 18:28+0000\n"
 "Last-Translator: \n"
 "Language-Team: https://translate.azurecurve.co.uk/\n"
@@ -35,16 +36,20 @@ msgstr ""
 msgid "Settings have been saved."
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:315
+#: azrcrv-toggle-showhide.php:315 azrcrv-toggle-showhide.php:646
 #, php-format
 msgid ""
-"To use the toggle in a widget, you will need a plugin such as %s which "
+"To use the toggle in a widget, you will need a plugin (such as %s) which "
 "enables shortcodes in widgets."
 msgstr ""
 
 #: azrcrv-toggle-showhide.php:316
 msgid ""
 "If the options are blank then the defaults in the plugin's CSS will be used."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:320
+msgid "Use multisite options instead of the site options below?"
 msgstr ""
 
 #: azrcrv-toggle-showhide.php:321 azrcrv-toggle-showhide.php:440
@@ -98,8 +103,8 @@ msgstr ""
 msgid "Title Background Color"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:354 azrcrv-toggle-showhide.php:677
-msgid "Set default title background color (e.g. 1px solid #00F000)"
+#: azrcrv-toggle-showhide.php:354
+msgid "Set default title background color (e.g. #00F000)"
 msgstr ""
 
 #: azrcrv-toggle-showhide.php:357 azrcrv-toggle-showhide.php:680
@@ -138,8 +143,8 @@ msgstr ""
 msgid "Text Background Color"
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:379 azrcrv-toggle-showhide.php:702
-msgid "Set default bg_text (e.g. 1px solid #00F000)"
+#: azrcrv-toggle-showhide.php:379
+msgid "Set default text background color (e.g. #00F000)"
 msgstr ""
 
 #: azrcrv-toggle-showhide.php:382 azrcrv-toggle-showhide.php:705
@@ -210,6 +215,10 @@ msgstr ""
 msgid "Allow shortcodes within toggle?"
 msgstr ""
 
+#: azrcrv-toggle-showhide.php:452 azrcrv-toggle-showhide.php:772
+msgid "Submit"
+msgstr ""
+
 #: azrcrv-toggle-showhide.php:468 azrcrv-toggle-showhide.php:619
 #: azrcrv-toggle-showhide.php:787
 msgid "You do not have permissions to perform this action"
@@ -219,16 +228,17 @@ msgstr ""
 msgid "Network Settings have been saved."
 msgstr ""
 
-#: azrcrv-toggle-showhide.php:646
-#, php-format
-msgid ""
-"To use the toggle in a widget, you will need a plugin (such as %s which "
-"enables shortcodes in widgets."
-msgstr ""
-
 #: azrcrv-toggle-showhide.php:647
 msgid ""
 "If multisite is being used these options will be used when Use Multisite "
 "enabled in Site Options; if the options are blank the defaults in the "
 "plugin's CSS will be used."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:677
+msgid "Set default title background color (e.g. 1px solid #00F000)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:702
+msgid "Set default bg_text (e.g. 1px solid #00F000)"
 msgstr ""

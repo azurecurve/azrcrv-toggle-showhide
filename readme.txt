@@ -1,6 +1,6 @@
 === Toggle Show/Hide ===
-Contributors: azurecurve
-Tags: XXX
+Contributors: azurecurve,Norskes
+Tags: toggle,show/hide
 Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
 Donate link: https://development.azurecurve.co.uk/support-development/
 Requires at least: 1.0.0
@@ -36,7 +36,7 @@ The following parameters can be used:
 * <strong>disable_image</strong> - set to 1 to disable toggle image. e.g. [toggle disable_image=1]content[/toggle]
 </ul>
 
-Shortcodes can now be used inside the content or title of the toggle (tested with Contact Form 7 and azurecurve BBCode).
+Shortcodes can now be used inside the content or title of the toggle (tested with Contact Form 7 and BBCode).
 
 Select toggle image in options or network options; allows different sites in a network to use different images. Extra images can be added by dropping them into the plugins /images folder
 
@@ -51,6 +51,10 @@ To install the Toggle Show/Hide plugin:
 
 == Changelog ==
 Changes and feature additions for the Toggle Show/Hide plugin:
+= 1.0.1 =
+* Update azurecurve menu for easier maintenance.
+* Move require of azurecurve menu below security check.
+* Localization fixes and translation into Russian (contributed by @Norskes).
 = 1.0.0 =
 * First version for ClassicPress forked from azurecurve Toggle Show/Hide WordPress Plugin.
 
