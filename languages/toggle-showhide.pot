@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-#, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: Toggle Show/Hide\n"
-"POT-Creation-Date: 2020-01-05 13:11+0000\n"
-"PO-Revision-Date: 2019-02-24 18:28+0000\n"
-"Last-Translator: \n"
-"Language-Team: https://translate.azurecurve.co.uk/\n"
-"Language: en_US\n"
-=======
 # Copyright (C) 2019 azurecurve
 # This file is distributed under the same license as the Toggle Show/Hide plugin.
 msgid ""
@@ -17,7 +6,6 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/azrcrv-toggle-showhide\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
->>>>>>> bb05d18cb11dd301ad1dadcb333326ef85bc05de
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -65,18 +53,10 @@ msgstr ""
 msgid "Settings have been saved."
 msgstr ""
 
-<<<<<<< HEAD
-#: azrcrv-toggle-showhide.php:315 azrcrv-toggle-showhide.php:646
-#, php-format
-msgid ""
-"To use the toggle in a widget, you will need a plugin (such as %s) which "
-"enables shortcodes in widgets."
-=======
 #. translators: %s is a plugin name.
 #: azrcrv-toggle-showhide.php:315
 #: azrcrv-toggle-showhide.php:646
 msgid "To use the toggle in a widget, you will need a plugin (such as %s) which enables shortcodes in widgets."
->>>>>>> bb05d18cb11dd301ad1dadcb333326ef85bc05de
 msgstr ""
 
 #. translators: %s is a plugin name.
@@ -88,12 +68,8 @@ msgstr ""
 msgid "Use multisite options instead of the site options below?"
 msgstr ""
 
-<<<<<<< HEAD
-#: azrcrv-toggle-showhide.php:321 azrcrv-toggle-showhide.php:440
-=======
 #: azrcrv-toggle-showhide.php:321
 #: azrcrv-toggle-showhide.php:440
->>>>>>> bb05d18cb11dd301ad1dadcb333326ef85bc05de
 #: azrcrv-toggle-showhide.php:760
 msgid "Disable images in toggle title?"
 msgstr ""
@@ -289,20 +265,12 @@ msgstr ""
 msgid "Allow shortcodes within toggle?"
 msgstr ""
 
-<<<<<<< HEAD
-#: azrcrv-toggle-showhide.php:452 azrcrv-toggle-showhide.php:772
-msgid "Submit"
-msgstr ""
-
-#: azrcrv-toggle-showhide.php:468 azrcrv-toggle-showhide.php:619
-=======
 #: azrcrv-toggle-showhide.php:452
 msgid "Submit"
 msgstr ""
 
 #: azrcrv-toggle-showhide.php:468
 #: azrcrv-toggle-showhide.php:619
->>>>>>> bb05d18cb11dd301ad1dadcb333326ef85bc05de
 #: azrcrv-toggle-showhide.php:787
 msgid "You do not have permissions to perform this action"
 msgstr ""
@@ -312,22 +280,7 @@ msgid "Network Settings have been saved."
 msgstr ""
 
 #: azrcrv-toggle-showhide.php:647
-<<<<<<< HEAD
-msgid ""
-"If multisite is being used these options will be used when Use Multisite "
-"enabled in Site Options; if the options are blank the defaults in the "
-"plugin's CSS will be used."
-=======
 msgid "If multisite is being used these options will be used when Use Multisite enabled in Site Options; if the options are blank the defaults in the plugin's CSS will be used."
-msgstr ""
-
-#: azrcrv-toggle-showhide.php:677
-msgid "Set default title background color (e.g. 1px solid #00F000)"
-msgstr ""
-
-#: azrcrv-toggle-showhide.php:702
-msgid "Set default bg_text (e.g. 1px solid #00F000)"
->>>>>>> bb05d18cb11dd301ad1dadcb333326ef85bc05de
 msgstr ""
 
 #: azrcrv-toggle-showhide.php:677
