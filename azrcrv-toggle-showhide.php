@@ -15,7 +15,7 @@
  * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. Full
  * text of the license is available at https://www.gnu.org/licenses/gpl-2.0.html.
  * ------------------------------------------------------------------------------
- */
+ */ 
 
 // Prevent direct access.
 if (!defined('ABSPATH')){

@@ -17,7 +17,7 @@ Toggle shortcode can be used to show/hide content.
 
 [toggle]content[/toggle] to use toggle in basic format; parameters are read from settings.
 
-The following parameters can be used:
+The following parameters can be used: 
 <ul>
 * <strong>title</strong> -  e.g. 
 * <strong>expand</strong> - set to 1 to display toggle open; 0 to display toggle closed. e.g. [toggle expand=1]content[/toggle]
