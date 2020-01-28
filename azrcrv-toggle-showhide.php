@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Toggle Show/Hide
  * Description: Toggle shortcode can be used to show/hide content.
- * Version: 1.0.1
+ * Version: 1.1.0
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
@@ -24,6 +24,10 @@ if (!defined('ABSPATH')){
 
 // include plugin menu
 require_once(dirname(__FILE__).'/pluginmenu/menu.php');
+register_activation_hook(__FILE__, 'azrcrv_create_plugin_menu_tsh');
+
+// include update client
+require_once(dirname(__FILE__).'/libraries/updateclient/UpdateClient.class.php');
 
 /**
  * Setup registration activation hook, actions, filters and shortcodes.
@@ -40,6 +44,7 @@ add_action('admin_post_azrcrv_tsh_save_options', 'azrcrv_tsh_save_options');
 add_action('wp_enqueue_scripts', 'azrcrv_tsh_load_css');
 add_action('wp_enqueue_scripts', 'azrcrv_tsh_load_jquery');
 //add_action('the_posts', 'azrcrv_tsh_check_for_shortcode');
+add_action('plugins_loaded', 'azrcrv_tsh_load_languages');
 
 // add filters
 add_filter('plugin_action_links', 'azrcrv_tsh_add_plugin_action_link', 10, 2);
@@ -47,6 +52,17 @@ add_filter('plugin_action_links', 'azrcrv_tsh_add_plugin_action_link', 10, 2);
 // add shortcodes
 add_shortcode('toggle', 'azrcrv_tsh_display_toggle');
 add_shortcode('TOGGLE', 'azrcrv_tsh_display_toggle');
+
+/**
+ * Load language files.
+ *
+ * @since 1.0.0
+ *
+ */
+function azrcrv_tsh_load_languages() {
+    $plugin_rel_path = basename(dirname(__FILE__)).'/languages';
+    load_plugin_textdomain('azrcrv-tsh', false, $plugin_rel_path);
+}
 
 /**
  * Check if shortcode on current page and then load css and jqeury.
@@ -296,7 +312,7 @@ function azrcrv_tsh_display_options(){
 	?>
 	<div id="azrcrv-tsh-general" class="wrap">
 		<fieldset>
-			<h2><?php echo esc_html(get_admin_page_title()); ?></h2>
+			<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 			<?php if(isset($_GET['settings-updated'])){ ?>
 				<div class="notice notice-success is-dismissible">
 					<p><strong><?php esc_html_e('Settings have been saved.', 'toggle-showhide') ?></strong></p>
@@ -627,7 +643,7 @@ function azrcrv_tsh_network_settings(){
 	?>
 	<div id="azrcrv-tsh-general" class="wrap">
 		<fieldset>
-			<h2><?php echo esc_html(get_admin_page_title()); ?></h2>
+			<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 			
 			<?php if(isset($_GET['settings-updated'])){ ?>
 				<div class="notice notice-success is-dismissible">
