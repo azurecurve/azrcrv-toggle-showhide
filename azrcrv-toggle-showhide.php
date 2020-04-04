@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Toggle Show/Hide
  * Description: Toggle shortcode can be used to show/hide content.
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
@@ -216,44 +216,73 @@ function azrcrv_tsh_set_default_options($networkwide){
 
 			foreach ($blog_ids as $blog_id){
 				switch_to_blog($blog_id);
-
-				if (get_option($option_name) === false){
-					if (get_option($old_option_name) === false){
-						add_option($option_name, $new_options);
-					}else{
-						add_option($option_name, get_option($old_option_name));
-					}
-				}
+				
+				azrcrv_tsh_update_options($option_name, $new_options, false, $old_option_name);
 			}
 
 			switch_to_blog($original_blog_id);
 		}else{
-			if (get_option($option_name) === false){
-				if (get_option($old_option_name) === false){
-					add_option($option_name, $new_options);
-				}else{
-					add_option($option_name, get_option($old_option_name));
-				}
-			}
+			azrcrv_tsh_update_options( $option_name, $new_options, false, $old_option_name);
 		}
 		if (get_site_option($option_name) === false){
-				if (get_option($old_option_name) === false){
-					add_option($option_name, $new_options);
-				}else{
-					add_option($option_name, get_option($old_option_name));
-				}
+			azrcrv_tsh_update_options($option_name, $new_options, true, $old_option_name);
 		}
 	}
 	//set defaults for single site
 	else{
+		azrcrv_tsh_update_options($option_name, $new_options, false, $old_option_name);
+	}
+}
+
+/**
+ * Update options.
+ *
+ * @since 1.1.3
+ *
+ */
+function azrcrv_tsh_update_options($option_name, $new_options, $is_network_site, $old_option_name){
+	if ($is_network_site == true){
+		if (get_site_option($option_name) === false){
+			if (get_site_option($old_option_name) === false){
+				add_site_option($option_name, $new_options);
+			}else{
+				add_site_option($option_name, azrcrv_tsh_update_default_options($new_options, get_site_option($old_option_name)));
+			}
+		}else{
+			update_site_option($option_name, azrcrv_tsh_update_default_options($new_options, get_site_option($option_name)));
+		}
+	}else{
 		if (get_option($option_name) === false){
-				if (get_option($old_option_name) === false){
-					add_option($option_name, $new_options);
-				}else{
-					add_option($option_name, get_option($old_option_name));
-				}
+			if (get_option($old_option_name) === false){
+				add_option($option_name, $new_options);
+			}else{
+				add_option($option_name, azrcrv_tsh_update_default_options($new_options, get_option($old_option_name)));
+			}
+		}else{
+			update_option($option_name, azrcrv_tsh_update_default_options($new_options, get_option($option_name)));
 		}
 	}
+}
+
+
+/**
+ * Add default options to existing options.
+ *
+ * @since 1.1.3
+ *
+ */
+function azrcrv_tsh_update_default_options( &$default_options, $current_options ) {
+    $default_options = (array) $default_options;
+    $current_options = (array) $current_options;
+    $updated_options = $current_options;
+    foreach ($default_options as $key => &$value) {
+        if (is_array( $value) && isset( $updated_options[$key ])){
+            $updated_options[$key] = azrcrv_tsh_update_default_options($value, $updated_options[$key]);
+        } else {
+            $updated_options[$key] = $value;
+        }
+    }
+    return $updated_options;
 }
 
 /**
@@ -929,7 +958,7 @@ function azrcrv_tsh_display_toggle($atts, $content = null){
 	
 	// extract attributes from shortcode
 	$args = shortcode_atts(array(
-		'title' => stripslashes($title),
+		'title' => stripslashes($options['title']),
 		'title_color' => stripslashes($options['title_color']),
 		'title_font' => stripslashes($options['title_font']),
 		'title_font_size' => stripslashes($options['title_font_size']),
@@ -981,7 +1010,7 @@ function azrcrv_tsh_display_toggle($atts, $content = null){
 	if (strlen($title_font_size) > 0){ $title_font_size = "font-size: ".$title_font_size."; "; }
 	if (strlen($title_font_weight) > 0){ $title_font_weight = "font-weight: ".$title_font_weight."; "; }
 	if (strlen($bgtitle) > 0){ $background_title = "background-color: ".$bgtitle."; "; }
-	if (strlen($bgtext) > 0){ $background_text = "background-color: ".$bgtext."; "; }
+	if (strlen($bgtext) > 0){ $background_text = "background-color: ".$bgtext."; "; }else{ $background_text = ''; }
 	if (strlen($text_color) > 0){ $text_color = "color: ".$text_color."; "; }
 	if (strlen($text_font) > 0){ $text_font = "font-family: ".$text_font."; "; }
 	if (strlen($text_font_size) > 0){ $text_font_size = "font-size: ".$text_font_size."; "; }
