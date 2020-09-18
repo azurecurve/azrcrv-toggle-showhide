@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Toggle Show/Hide
  * Description: Toggle shortcode can be used to show/hide content.
- * Version: 1.1.4
+ * Version: 1.1.5
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
@@ -1008,7 +1008,7 @@ function azrcrv_tsh_display_toggle($atts, $content = null){
 	if (strlen($title_font) > 0){ $title_font = "font-family: ".$title_font."; "; }
 	if (strlen($title_font_size) > 0){ $title_font_size = "font-size: ".$title_font_size."; "; }
 	if (strlen($title_font_weight) > 0){ $title_font_weight = "font-weight: ".$title_font_weight."; "; }
-	if (strlen($bgtitle) > 0){ $background_title = "background-color: ".$bgtitle."; "; }
+	if (strlen($bgtitle) > 0){ $background_title = "background-color: ".$bgtitle."; "; }else{ $background_title = ''; }
 	if (strlen($bgtext) > 0){ $background_text = "background-color: ".$bgtext."; "; }else{ $background_text = ''; }
 	if (strlen($text_color) > 0){ $text_color = "color: ".$text_color."; "; }
 	if (strlen($text_font) > 0){ $text_font = "font-family: ".$text_font."; "; }
