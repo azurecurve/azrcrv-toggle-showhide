@@ -53,7 +53,9 @@ if (!function_exists('azrcrv_display_plugin_menu')){
 		
 		foreach($plugin_array as $plugin_name => $plugin_details) {
 			if (is_plugin_active($plugin_details['plugin_link'])){
-				echo '<a href="'.$plugin_details['admin_URL'].'" class="azrcrv-plugin-index">'.$plugin_name.'</a>';
+				if ($plugin_details['retired'] == 0){
+					echo '<a href="'.$plugin_details['admin_URL'].'" class="azrcrv-plugin-index">'.$plugin_name.'</a>';
+				}
 			}
 		}
 		
@@ -67,8 +69,10 @@ if (!function_exists('azrcrv_display_plugin_menu')){
 		
 		foreach($plugin_array as $plugin_name => $plugin_details) {
 			if (!is_plugin_active($plugin_details['plugin_link'])){
-				echo '<a href="'.$plugin_details['dev_URL'].'" class="azrcrv-plugin-index">'.$plugin_name.'</a>';
-				$countofplugins += 1;
+				if ($plugin_details['retired'] == 0){
+					echo '<a href="'.$plugin_details['dev_URL'].'" class="azrcrv-plugin-index">'.$plugin_name.'</a>';
+					$countofplugins += 1;
+				}
 			}
 		}
 		
@@ -223,8 +227,8 @@ if (!function_exists('azrcrv_populate_plugin_menu_tsh')){
 				'retired' => 0,
 				'updated' => '2020-10-26',
 			),
-			'gET GitHub File' => array(
-				'plugin_link' => 'azrcrv-GET-github-file/azrcrv-GET-github-file.php',
+			'Get GitHub File' => array(
+				'plugin_link' => 'azrcrv-get-github-file/azrcrv-get-github-file.php',
 				'admin_URL' => 'admin.php?page=azrcrv-gghf',
 				'dev_URL' => 'https://development.azurecurve.co.uk/classicpress-plugins/get-github-file/',
 				'retired' => 0,
