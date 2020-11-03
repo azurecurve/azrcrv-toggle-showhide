@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Toggle Show/Hide
  * Description: Toggle shortcode can be used to show/hide content.
- * Version: 1.2.0
+ * Version: 1.3.0
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
@@ -39,10 +39,11 @@ require_once(dirname(__FILE__).'/libraries/updateclient/UpdateClient.class.php')
 add_action('admin_menu', 'azrcrv_tsh_create_admin_menu');
 add_action('admin_post_azrcrv_tsh_save_options', 'azrcrv_tsh_save_options');
 add_action('plugins_loaded', 'azrcrv_tsh_load_languages');
+add_action('wp_enqueue_scripts', 'azrcrv_tsh_load_css');
+add_action('wp_enqueue_scripts', 'azrcrv_tsh_load_jquery');
 
 // add filters
 add_filter('plugin_action_links', 'azrcrv_tsh_add_plugin_action_link', 10, 2);
-add_filter('the_posts', 'azrcrv_tsh_check_for_shortcode', 10, 2);
 add_filter('codepotent_update_manager_image_path', 'azrcrv_tsh_custom_image_path');
 add_filter('codepotent_update_manager_image_url', 'azrcrv_tsh_custom_image_url');
 
@@ -59,45 +60,6 @@ add_shortcode('TOGGLE', 'azrcrv_tsh_display_toggle');
 function azrcrv_tsh_load_languages() {
     $plugin_rel_path = basename(dirname(__FILE__)).'/languages';
     load_plugin_textdomain('toggle-showhide', false, $plugin_rel_path);
-}
-
-/**
- * Check if shortcode on current page and then load css and jqeury.
- *
- * @since 1.0.0
- *
- */
-function azrcrv_tsh_check_for_shortcode($posts){
-    if (empty($posts)){
-        return $posts;
-	}
-	
-	
-	// array of shortcodes to search for
-	$shortcodes = array(
-						'toggle','TOGGLE'
-						);
-	
-    // loop through posts
-    $found = false;
-    foreach ($posts as $post){
-		// loop through shortcodes
-		foreach ($shortcodes as $shortcode){
-			// check the post content for the shortcode
-			if (has_shortcode($post->post_content, $shortcode)){
-				$found = true;
-				// break loop as shortcode found in page content
-				break 2;
-			}
-		}
-	}
- 
-    if ($found){
-		// as shortcode found call functions to load css and jquery
-        azrcrv_tsh_load_css();
-		azrcrv_tsh_load_jquery();
-    }
-    return $posts;
 }
 
 /**

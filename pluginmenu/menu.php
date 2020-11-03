@@ -223,6 +223,13 @@ if (!function_exists('azrcrv_populate_plugin_menu_tsh')){
 				'retired' => 0,
 				'updated' => '2020-10-26',
 			),
+			'gET GitHub File' => array(
+				'plugin_link' => 'azrcrv-GET-github-file/azrcrv-GET-github-file.php',
+				'admin_URL' => 'admin.php?page=azrcrv-gghf',
+				'dev_URL' => 'https://development.azurecurve.co.uk/classicpress-plugins/get-github-file/',
+				'retired' => 0,
+				'updated' => '2020-10-31',
+			),
 			'Icons' => array(
 				'plugin_link' => 'azrcrv-icons/azrcrv-icons.php',
 				'admin_URL' => 'admin.php?page=azrcrv-i',
@@ -300,8 +307,8 @@ if (!function_exists('azrcrv_populate_plugin_menu_tsh')){
 				'plugin_link' => 'azrcrv-read-github-file/azrcrv-read-github-file.php',
 				'admin_URL' => 'admin.php?page=azrcrv-rghf',
 				'dev_URL' => 'https://development.azurecurve.co.uk/classicpress-plugins/read-github-file/',
-				'retired' => 0,
-				'updated' => '2020-04-04',
+				'retired' => 1,
+				'updated' => '2020-10-31',
 			),
 			'RSS Feed' => array(
 				'plugin_link' => 'azrcrv-rss-feed/azrcrv-rss-feed.php',
