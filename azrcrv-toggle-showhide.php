@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Toggle Show/Hide
  * Description: Toggle shortcode can be used to show/hide content.
- * Version: 1.3.0
+ * Version: 1.3.1
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
@@ -180,6 +180,8 @@ function azrcrv_tsh_get_option($option_name){
 						,'bg_title' => ''
 						,'bg_text' => ''
 						,'text_color' => ''
+						,'text_font' => ''
+						,'text_font_size' => ''
 						,'disable_image' => 0
 						,'width' => ""
 						,'image_open' => ""
@@ -209,7 +211,7 @@ function azrcrv_tsh_add_plugin_action_link($links, $file){
 	}
 
 	if ($file == $this_plugin){
-		$settings_link = '<a href="'.get_bloginfo('wpurl').'/wp-admin/admin.php?page=azrcrv-tsh"><img src="'.plugins_url('/pluginmenu/images/Favicon-16x16.png', __FILE__).'" style="padding-top: 2px; margin-right: -5px; height: 16px; width: 16px;" alt="azurecurve" />'.esc_html__('Settings' ,'toggle-showhide').'</a>';
+		$settings_link = '<a href="'.get_bloginfo('wpurl').'/wp-admin/admin.php?page=azrcrv-tsh"><img src="'.plugins_url('/pluginmenu/images/logo.svg', __FILE__).'" style="padding-top: 2px; margin-right: -5px; height: 16px; width: 16px;" alt="azurecurve" />'.esc_html__('Settings' ,'toggle-showhide').'</a>';
 		array_unshift($links, $settings_link);
 	}
 

@@ -1,13 +1,13 @@
 === Toggle Show/Hide ===
 
 Description:	Toggle shortcode can be used to show/hide content.
-Version:		1.3.0
+Version:		1.3.1
 Tags:			toggle,show/hide
 Author:			azurecurve
 Contributors:	azurecurve,Norskes
 Author URI:		https://development.azurecurve.co.uk/
 Plugin URI:		https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
-Download link:	https://github.com/azurecurve/azrcrv-toggle-showhide/releases/download/v1.3.0/azrcrv-toggle-showhide.zip
+Download link:	https://github.com/azurecurve/azrcrv-toggle-showhide/releases/download/v1.3.1/azrcrv-toggle-showhide.zip
 Donate link:	https://development.azurecurve.co.uk/support-development/
 Requires PHP:	5.6
 Requires:		1.0.0
@@ -73,6 +73,10 @@ This plugin is developed for ClassicPress, but will likely work on WordPress.
 
 # Changelog
 
+### [Version 1.3.1](https://github.com/azurecurve/azrcrv-toggle-showhide/releases/tag/v1.3.1)
+ * Fix bug with missing text_font and text_font_size default options.
+ * Update azurecurve menu.
+
 ### [Version 1.3.0](https://github.com/azurecurve/azrcrv-toggle-showhide/releases/tag/v1.3.0)
  * Undo amendment of loading css and javascript only if shortcodes on the page as this causes issues as toggle is integrated into other plugins which use the shortcode within a shortcode.
 
@@ -127,7 +131,7 @@ This plugin is developed for ClassicPress, but will likely work on WordPress.
 Some of the top plugins available from **azurecurve** are:
 * [Add Twitter Cards](https://development.azurecurve.co.uk/classicpress-plugins/add-twitter-cards/)
 * [Breadcrumbs](https://development.azurecurve.co.uk/classicpress-plugins/breadcrumbs/)
-* [Series Index](https://development.azurecurve.co.uk/classicpress-plugins/series-index/)
+* [SMTP](https://development.azurecurve.co.uk/classicpress-plugins/smtp/)
 * [To Twitter](https://development.azurecurve.co.uk/classicpress-plugins/to-twitter/)
 * [Theme Switcher](https://development.azurecurve.co.uk/classicpress-plugins/theme-switcher/)
 * [Toggle Show/Hide](https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/)
