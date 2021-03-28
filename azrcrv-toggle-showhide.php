@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Toggle Show/Hide
  * Description: Toggle shortcode can be used to show/hide content.
- * Version: 1.4.0
+ * Version: 1.4.1
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
@@ -1228,11 +1228,11 @@ function azrcrv_tsh_display_toggle_style2($atts, $content, $options){
 	}
 	
 	$content_split = explode('<!--readmore-->', $content);
-	$content_one = $content_split[0];
-	$content_two = $content_split[1];
 	
 	$button_text = esc_attr($options['style2']['read-more']);
-	if (is_array($content_split)){
+	if (isset($content_split[1])){
+		$content_one = $content_split[0];
+		$content_two = $content_split[1];
 		$output = "<p class='azrcrv-tsh-container'>$content_one<div class='azrcrv-tsh-readmore'>$content_two</div><a class='azrcrv-tsh-readmore-button' href='#'>$button_text</a></p><p style='clear: both; ' />";
 	}else{
 		$output = $content;
