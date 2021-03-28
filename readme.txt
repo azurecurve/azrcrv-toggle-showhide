@@ -1,13 +1,13 @@
 === Toggle Show/Hide ===
 
 Description:	Toggle shortcode can be used to show/hide content.
-Version:		1.3.1
+Version:		1.4.0
 Tags:			toggle,show/hide
 Author:			azurecurve
 Contributors:	azurecurve,Norskes
 Author URI:		https://development.azurecurve.co.uk/
 Plugin URI:		https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
-Download link:	https://github.com/azurecurve/azrcrv-toggle-showhide/releases/download/v1.3.1/azrcrv-toggle-showhide.zip
+Download link:	https://github.com/azurecurve/azrcrv-toggle-showhide/releases/download/v1.4.0/azrcrv-toggle-showhide.zip
 Donate link:	https://development.azurecurve.co.uk/support-development/
 Requires PHP:	5.6
 Requires:		1.0.0
@@ -43,10 +43,14 @@ The following parameters can be used:
 * **text_font_weight ** - override text font weight from settings. e.g. [toggle text_font_weight=600]content[/toggle]
 * **bgtext** - override text background colour from settings. e.g. [toggle bgtext='#000']content[/toggle]
 * **disable_image** - set to 1 to disable toggle image. e.g. [toggle disable_image=1]content[/toggle]
+* **image_location** - set to left or right to override default. e.g. [toggle image_location='right']content[/toggle]
+* **style** - set to 1 (show/hide) or 2 (read more) to override default e.g. [toggle image_location='right']content[/toggle]
 
-Shortcodes can now be used inside the content or title of the toggle (tested with Contact Form 7 and [BBCode](https://development.azurecurve.co.uk/classicpress-plugins/bbcode/)).
+Shortcodes can now be used inside the content or title of the toggle (tested with Contact Form 7 and [BBCode](https://development.azurecurve.co.uk/classicpress-plugins/bbcode/)) if the relevant option is set.
 
-Select toggle image in options or network options; allows different sites in a network to use different images. Extra images can be added by dropping them into the plugins */images* folder
+When using read more toggle, apply the **<!--readmore-->** tag where the readmore button should be placed.
+
+Select toggle image in options or network options; allows different sites in a network to use different images.
 
 This plugin is multisite compatible; each site can be set to use network settings or locally defined ones.
 
@@ -72,6 +76,11 @@ This plugin is developed for ClassicPress, but will likely work on WordPress.
 == Changelog ==
 
 # Changelog
+
+### [Version 1.4.0](https://github.com/azurecurve/azrcrv-toggle-showhide/releases/tag/v1.4.0)
+ * Add *Read More* toggle as second style.
+ * Add option to select default toggle style.
+ * Refactor settings page.
 
 ### [Version 1.3.1](https://github.com/azurecurve/azrcrv-toggle-showhide/releases/tag/v1.3.1)
  * Fix bug with missing text_font and text_font_size default options.

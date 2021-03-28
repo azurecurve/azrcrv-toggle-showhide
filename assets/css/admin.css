@@ -1,0 +1,32 @@
+.azrcrv-tsh-nav-wrapper{
+	padding-top: 6px;
+	margin-bottom: none;
+}
+.azrcrv-tsh-nav-tab{
+	padding: 6px 12px;
+	border: 1px solid grey;
+	border-bottom: 4px solid grey;
+	text-decoration: none;
+	color: grey;
+}
+.azrcrv-tsh-nav-tab-active{
+	border: 1px solid grey;
+	border-bottom: 4px solid #007FFF;
+	color: #007FFF;
+}
+.azrcrv-tsh-nav-tab:hover{
+	border: 1px solid grey;
+	border-bottom: 4px solid #ff8000;
+	color: #ff8000;
+}
+.azrcrv-tsh-tab-wrapper{
+	border: 1px solid grey;
+	margin-top: -5px;
+	margin-bottom: 6px;
+}
+.azrcrv-tsh-tab{
+	padding: 0 15px;
+}
+.azrcrv-tsh-tab-invisible{
+	display: none;
+}

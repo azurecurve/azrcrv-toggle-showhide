@@ -29,10 +29,19 @@
 }
 .azrcrv-tsh-toggle-container, .azrcrv-tsh-toggle-container-open {
 	margin: auto;
-    margin-bottom: 5px !important;
+    margin-bottom: 15px !important;
 	padding: 5px 15px;
 	border-right: 1px solid #007fff;
 	border-bottom: 1px solid #007fff;
 	border-left: 1px solid #007fff;
 	overflow: auto;
+}
+
+.azrcrv-tsh-readmore-container{
+}
+.azrcrv-tsh-readmore{
+}
+.azrcrv-tsh-readmore-button{
+	text-decoration: none;
+	float: right;
 }
