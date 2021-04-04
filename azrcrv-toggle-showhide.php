@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Toggle Show/Hide
  * Description: Toggle shortcode can be used to show/hide content.
- * Version: 1.4.1
+ * Version: 1.5.0
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
@@ -177,6 +177,12 @@ function azrcrv_tsh_load_admin_style(){
 		
 		wp_register_style('azrcrv-tsh-admin-css', plugins_url('assets/css/admin.css', __FILE__), false, '1.0.0');
 		wp_enqueue_style('azrcrv-tsh-admin-css');
+		
+		wp_register_style('azrcrv-tsh-admin-css-jquery-ui', plugins_url('libraries/jquery-ui/jquery-ui.css', __FILE__), false, '1.0.0');
+		wp_enqueue_style('azrcrv-tsh-admin-css-jquery-ui');
+		
+		wp_register_style('azrcrv-tsh-admin-css-jquery-ui-structure', plugins_url('libraries/jquery-ui/jquery-ui.structure.css', __FILE__), false, '1.0.0');
+		wp_enqueue_style('azrcrv-tsh-admin-css-jquery-ui-structure');
 	}
 }
 
@@ -194,6 +200,9 @@ function azrcrv_tsh_load_admin_jquery(){
 		wp_enqueue_script('azrcrv-tsh-jquery', plugins_url('assets/jquery/jquery.js', __FILE__), array('jquery'), '3.9.1');
 	
 		wp_enqueue_script('azrcrv-tsh-admin-jquery', plugins_url('assets/jquery/admin.js', __FILE__), array('jquery'));
+		
+		wp_enqueue_script('azrcrv-tsh-admin-jquery-ui', plugins_url('libraries/jquery-ui/jquery-ui.js', __FILE__), array('jquery'));
+		wp_enqueue_script('azrcrv-tsh-admin-jquery-ui-external', plugins_url('libraries/jquery-ui/external/jquery/jquery.js', __FILE__), array('jquery'));
 	}
 }
 
@@ -352,16 +361,16 @@ function azrcrv_tsh_display_options(){
 	if (!isset($options['image_close'])){ $options['image_close'] = ''; }
 	?>
 	<div id="azrcrv-tsh-general" class="wrap">
-		<fieldset>
+		
 			<h1>
 				<?php
 					echo '<a href="https://development.azurecurve.co.uk/classicpress-plugins/"><img src="'.plugins_url('/pluginmenu/images/logo.svg', __FILE__).'" style="padding-right: 6px; height: 20px; width: 20px;" alt="azurecurve" /></a>';
-					_e(get_admin_page_title());
+					esc_html_e(get_admin_page_title());
 				?>
 			</h1>
 			<?php if(isset($_GET['settings-updated'])){ ?>
 				<div class="notice notice-success is-dismissible">
-					<p><strong><?php _e('Settings have been saved.', 'toggle-showhide') ?></strong></p>
+					<p><strong><?php esc_html_e('Settings have been saved.', 'toggle-showhide') ?></strong></p>
 				</div>
 			<?php } ?>
 			<form method="post" action="admin-post.php">
@@ -375,246 +384,605 @@ function azrcrv_tsh_display_options(){
 					<?php printf(/* translators: %s is a plugin name. */ __('To use the toggle in a widget, you will need a plugin (such as %s) which enables shortcodes in widgets.', 'toggle-showhide'), '<a href="https://development.azurecurve.co.uk/classicpress-plugins/shortcodes-in-widgets/">Shortcodes in Widgets</a>'); ?>
 				</p>
 				
-				<h2 class="azrcrv-tsh-nav-wrapper">
-					<a class="azrcrv-tsh-nav-tab azrcrv-tsh-nav-tab-active" data-item=".tabs-1" href="#tabs-1"><?php _e('General', 'toggle-showhide'); ?></a>
-					<a class="azrcrv-tsh-nav-tab" data-item=".tabs-2" href="#tabs-2"><?php _e('Style 1 - Toggle', 'toggle-showhide'); ?></a>
-					<a class="azrcrv-tsh-nav-tab" data-item=".tabs-3" href="#tabs-3"><?php _e('Style 2 - Read More', 'toggle-showhide'); ?></a>
-				</h2>
+				<?php
+				/*
+					Tab 1 = General Settings
+				*/
+				$tab_1 = "
+							<table class='form-table'>";
 				
-				<div class='azrcrv-tsh-tab-wrapper'>
-					<div class="azrcrv-tsh-tab tabs-1">
-						
-						<table class="form-table">
-					
-							<?php if (function_exists('is_multisite') && is_multisite()){ ?>
-								<tr><th scope="row"><?php _e("Use multisite options instead of the site options below?", "toggle-showhide"); ?></th><td>
-									<fieldset><legend class="screen-reader-text"><span><?php _e('Disable images in toggle title?', 'toggle-showhide'); ?></span></legend>
-									<label for="use_multisite"><input name="use_multisite" type="checkbox" id="use_multisite" value="1" <?php checked('1', $options['use_multisite']); ?> /></label>
-									</fieldset>
-								</td></tr>
-							<?php } ?>
-							
-							<tr><th scope="row"><?php _e('Allow Shortcodes?', 'toggle-showhide'); ?></th><td>
-								<fieldset><legend class="screen-reader-text"><span><?php _e('Allow shortcodes within toggle?', 'toggle-showhide'); ?></span></legend>
-								<label for="allow_shortcodes"><input name="allow_shortcodes" type="checkbox" id="allow_shortcodes" value="1" <?php checked('1', $options['allow_shortcodes']); ?> /><?php _e('Allow shortcodes within toggle?', 'toggle-showhide'); ?></label>
-								</fieldset>
-							</td></tr>
-							
-							<tr><th scope="row"><?php _e('Default Style', 'toggle-showhide'); ?></th><td>
-								<select name="default-style">
-									<option value="1" <?php if ($options['default-style'] == '1'){ echo ' selected="selected"'; } ?>><?php _e("Style 1 - Toggle", "toggle-showhide"); ?></option>
-									<option value="2" <?php if ($options['default-style'] == '2'){ echo ' selected="selected"'; } ?>><?php _e("Style 2 - Read More", "toggle-showhide"); ?></option>
-								</select>
-							</td></tr>
-							
-						</table>
-						
-					</div>
-					
-					<div class="azrcrv-tsh-tab tabs-2 azrcrv-tsh-tab-invisible">
-						
-						<table class="form-table">
-							
-							<tr>
-								<th colspan=2 scope="row">
-									<p><?php _e('If the options are blank then the defaults in the plugin\'s CSS will be used.', 'toggle-showhide'); ?></p>
-								</th>
-							</tr>
-							
-							<tr><th scope="row"><label for="width"><?php _e('Width', 'toggle-showhide'); ?></label></th><td>
-								<input type="text" name="width" value="<?php echo esc_html(stripslashes($options['width'])); ?>" class="small-text" />
-								<p class="description"><?php _e('Set default width (e.g. 65% or 500px)', 'toggle-showhide'); ?></p>
-							</td></tr>
-							
-							<tr><th scope="row"><label for="border"><?php _e('Border', 'toggle-showhide'); ?></label></th><td>
-								<input type="text" name="border" value="<?php echo esc_html(stripslashes($options['border'])); ?>" class="regular-text" />
-								<p class="description"><?php _e('Set default border (e.g. 1px solid #007FFF)', 'toggle-showhide'); ?></p>
-							</td></tr>
-							
-						</table>
-						
-						<?php
-						$output = '<table class="form-table">
-							
-							<tr><th scope="row"><label for="title_tag">'.__('Title Tag', 'toggle-showhide').'</label></th><td>
-								<input type="text" name="title_tag" value="'.esc_html(stripslashes($options['title_tag'])).'" class="small-text" />
-								<p class="description">'.sprintf(/* translators: %s is a html tag name. */ esc_html__('Set default title tag (e.g. h3); if not set, %s will be used.', 'toggle-showhide'), 'h3').'</p>
-							</td></tr>
-							
-							<tr><th scope="row"><label for="title">'.__('Title', 'toggle-showhide').'</label></th><td>
-								<input type="text" name="title" value="'.__(stripslashes($options['title'])).'" class="large-text" />
-								<p class="description">'.__('Set default title text (e.g. Click here to toggle show/hide)', 'toggle-showhide').'</p>
-							</td></tr>
-							
-							<tr><th scope="row"><label for="title_color">'.__('Title Color', 'toggle-showhide').'</label></th><td>
-								<input type="text" name="title_color" value="'.__(stripslashes($options['title_color'])).'" class="regular-text" />
-								<p class="description">'.__('Set default title color (e.g. #000)', 'toggle-showhide').'</p>
-							</td></tr>
-							
-							<tr><th scope="row"><label for="bg_title">'.__('Title Background Color', 'toggle-showhide').'</label></th><td>
-								<input type="text" name="bg_title" value="'.__(stripslashes($options['bg_title'])).'" class="regular-text" />
-								<p class="description">'.__('Set default title background color (e.g. #007FFF)', 'toggle-showhide').'</p>
-							</td></tr>
-							
-							<tr><th scope="row"><label for="title_font">'.__('Title Font Family', 'toggle-showhide').'</label></th><td>
-								<input type="text" name="title_font" value="'.__(stripslashes($options['title_font'])).'" class="large-text" />
-								<p class="description">'.__('Set default title font family (e.g. Arial, Calibri)', 'toggle-showhide').'</p>
-							</td></tr>
-							
-							<tr><th scope="row"><label for="title_font_size">'.__('Title Font Size', 'toggle-showhide').'</label></th><td>
-								<input type="text" name="title_font_size" value="'.__(stripslashes($options['title_font_size'])).'" class="small-text" />
-								<p class="description">'.__('Set default title font size (e.g. 1.2em or 14px)', 'toggle-showhide').'</p>
-							</td></tr>
-							
-							<tr><th scope="row"><label for="title_font_weight">'.__('Title Font Weight', 'toggle-showhide').'</label></th><td>
-								<input type="text" name="title_font_weight" value="'.__(stripslashes($options['title_font_weight'])).'" class="small-text" />
-								<p class="description">'.__('Set default title font weight (e.g. 600)', 'toggle-showhide').'</p>
-							</td></tr>
-							
-						</table>';
-						
-						echo do_shortcode('[toggle expand=1 title="'.__('Toggle Title', 'toggle-showhide').'" width="100%" border="none" image_location="right" title_tag="h2" title_color="black" bg_title="none" title_font_family="-" title_font_size="1.3em; text-decoration: none;"]'.$output.'[/toggle]');
-						
-						$checked = '';
-						if ($options['disable_image'] ==1){
-							$checked = 'checked=checked';
+				// use multisite			
+				if (function_exists('is_multisite') && is_multisite()){
+					$use_multisite_th = esc_html__("Use multisite options?", "toggle-showhide");
+					$use_multisite_name = 'use_multisite';
+					$use_multisite_checked = checked('1', $options[$use_multisite_name]);
+					$use_multisite_prompt = esc_html__('Use multisite options instead of the site options below?', 'toggle-showhide');
+					$use_multisite_td = "<input name='$use_multisite_name' type='checkbox' id='$use_multisite_name' value='1' $use_multisite_checked />";
+					$use_multisite_td .= "<label for='$use_multisite_name'>$use_multisite_prompt</label>";
+					$tab_1 .=	"
+								<tr>
+									<th scope='row'>
+										$use_multisite_th
+									</th>
+									
+									<td>
+										$use_multisite_td
+									</td>
+								</tr>";
+				}
+				// allow shortcodes
+				$allow_shortcodes_th = esc_html__('Allow Shortcodes?', 'toggle-showhide');
+				$allow_shortcodes_name = 'allow_shortcodes';
+				$allow_shortcodes_checked = ($options[$allow_shortcodes_name] == 1) ? 'checked' : '';
+				$allow_shortcodes_prompt = esc_html__('Allow shortcodes within toggle?', 'toggle-showhide');
+				$allow_shortcodes_td = "<input name='$allow_shortcodes_name' type='checkbox' id='$allow_shortcodes_name' value='1' $allow_shortcodes_checked />";
+				$allow_shortcodes_td .= "<label for='$allow_shortcodes_name'>$allow_shortcodes_prompt</label>";
+				$tab_1 .= "
+								<tr>
+									<th scope='row'>
+										$allow_shortcodes_th
+									</th>
+									
+									<td>
+										$allow_shortcodes_td
+									</td>
+								</tr>";
+				// default style
+				$default_style_th = esc_html__('Default Style', 'toggle-showhide');
+				$default_style_name = 'default-style';
+				$default_style_1_value = esc_html__("Style 1 - Toggle", "toggle-showhide");
+				$default_style_1_checked = ($options[$default_style_name] == 1) ? 'selected' : '';
+				$default_style_1_option = "<option value='1' $default_style_1_checked>$default_style_1_value</option>";
+				$default_style_2_value = esc_html__("Style 2 - Read More", "toggle-showhide");
+				$default_style_2_checked = ($options[$default_style_name] == 2) ? 'selected' : '';
+				$default_style_2_option = "<option value='2' $default_style_2_checked>$default_style_2_value</option>";
+				$default_style_td = "<select name='$default_style_name'>$default_style_1_option$default_style_2_option</select>";
+				$tab_1 .= "
+								<tr>
+									<th scope='row'>
+										$default_style_th
+									</th>
+									
+									<td>
+										$default_style_td
+									</td>
+								</tr>
+							</table>
+						</fieldset>";
+				
+				/*
+					Tab 2 = Stype 1 - Toggle
+				*/
+				$tab_2 = "
+							<table class='form-table'>";
+				// instructions
+				$tab_2_th = esc_html__('If the options are blank then the defaults in the plugin\'s CSS will be used.', 'toggle-showhide');
+				$tab_2 .= "
+								<tr>
+									<th scope='row' colspan=2>
+										$tab_2_th
+									</th>
+								</tr>";
+				// width
+				$width_th = esc_html__('Width', 'toggle-showhide');
+				$width_name = 'width';
+				$width_value = esc_html__(stripslashes($options[$width_name]));
+				$width_input = "<input type='text' name='$width_name' value='$width_value' class='small-text' />";
+				$width_description_text = sprintf(esc_html__('Set default width (e.g. %1$s65&#37;%2$s or %1$s500px%2$s).', 'toggle-showhide'), '<strong>', '</strong>');
+				$width_description = "<p class='description'>$width_description_text</p>";
+				$width_td = $width_input.$width_description;
+				$tab_2 .= "
+								<tr>
+									<th scope='row'>
+										$width_th
+									</th>
+									
+									<td>
+										$width_td
+									</td>
+								</tr>";
+				// border
+				$border_th = esc_html__('Border', 'toggle-showhide');
+				$border_name = 'border';
+				$border_value = esc_html__(stripslashes($options[$border_name]));
+				$border_input = "<input type='text' name='$border_name' value='$border_value' class='regular-text' />";
+				$border_description_text = sprintf(esc_html__('Set default border (e.g. %1$s1px solid #007FFF%2$s or %1$snone%2$s).', 'toggle-showhide'), '<strong>', '</strong>');
+				$border_description = "<p class='description'>$border_description_text</p>";
+				$border_td = $border_input.$border_description;
+				$tab_2 .= "
+								<tr>
+									<th scope='row'>
+										$border_th
+									</th>
+									
+									<td>
+										$border_td
+									</td>
+								</tr>
+							</table>";
+				/*
+				toggle title section content
+				*/
+				// title tag
+				$title_tag_th = esc_html__('Title Tag', 'toggle-showhide');
+				$title_tag_name = 'title_tag';
+				$title_tag_value = esc_html__(stripslashes($options[$title_tag_name]));
+				$title_tag_input = "<input type='text' name='$title_tag_name' value='$title_tag_value' class='small-text' />";
+				$title_tag_description_text = sprintf(esc_html__('Set default title tag (e.g. %sh3%s); if not set, %s will be used.', 'toggle-showhide'), '<strong>', '</strong>', 'h3');
+				$title_tag_description = "<p class='description'>$title_tag_description_text</p>";
+				$title_tag_td = $title_tag_input.$title_tag_description;
+				$toggle_title_content = "
+							<table class='form-table'>
+								<tr>
+									<th scope='row'>
+										$title_tag_th
+									</th>
+									
+									<td>
+										$title_tag_td
+									</td>
+								</tr>";
+				// title
+				$title_th = esc_html__('Title', 'toggle-showhide');
+				$title_name = 'title';
+				$title_value = esc_html__(stripslashes($options[$title_name]));
+				$title_input = "<input type='text' name='$title_name' value='$title_value' class='regular-text' />";
+				$title_description_text = sprintf(esc_html__('Set default title text (e.g. %sClick here to toggle show/hide%s).', 'toggle-showhide'), '<strong>', '</strong>', 'h3');
+				$title_description = "<p class='description'>$title_description_text</p>";
+				$title_td = $title_input.$title_description;
+				$toggle_title_content .= "
+								<tr>
+									<th scope='row'>
+										$title_th
+									</th>
+									
+									<td>
+										$title_td
+									</td>
+								</tr>";
+				// title colour
+				$title_color_th = esc_html__('Title Color', 'toggle-showhide');
+				$title_color_name = 'title_color';
+				$title_color_value = esc_html__(stripslashes($options[$title_color_name]));
+				$title_color_input = "<input type='text' name='$title_color_name' value='$title_color_value' class='regular-text' />";
+				$title_color_description_text = sprintf(esc_html__('Set default title color (e.g. %1$s#000%2$s or %1$sblack%2$s).', 'toggle-showhide'), '<strong>', '</strong>');
+				$title_color_description = "<p class='description'>$title_color_description_text</p>";
+				$title_color_td = $title_color_input.$title_color_description;
+				$toggle_title_content .= "
+								<tr>
+									<th scope='row'>
+										$title_color_th
+									</th>
+									
+									<td>
+										$title_color_td
+									</td>
+								</tr>";
+				// title background colour
+				$title_background_color_th = esc_html__('Title Background Color', 'toggle-showhide');
+				$title_background_color_name = 'bg_title';
+				$title_background_color_value = esc_html__(stripslashes($options[$title_background_color_name]));
+				$title_background_color_input = "<input type='text' name='$title_background_color_name' value='$title_background_color_value' class='regular-text' />";
+				$title_background_color_description_text = sprintf(esc_html__('Set default title background color (e.g. %1$s#FFF%2$s or %1$swhite%2$s).', 'toggle-showhide'), '<strong>', '</strong>');
+				$title_background_color_description = "<p class='description'>$title_background_color_description_text</p>";
+				$title_background_color_td = $title_background_color_input.$title_background_color_description;
+				$toggle_title_content .= "
+								<tr>
+									<th scope='row'>
+										$title_background_color_th
+									</th>
+									
+									<td>
+										$title_background_color_td
+									</td>
+								</tr>";
+				// title font family
+				$title_font_th = esc_html__('Title Font Family', 'toggle-showhide');
+				$title_font_name = 'title_font';
+				$title_font_value = esc_html__(stripslashes($options[$title_font_name]));
+				$title_font_input = "<input type='text' name='$title_font_name' value='$title_font_value' class='large-text' />";
+				$title_font_description_text = sprintf(esc_html__('Set default title font family (e.g. %sArial, Calibri%s).', 'toggle-showhide'), '<strong>', '</strong>');
+				$title_font_description = "<p class='description'>$title_font_description_text</p>";
+				$title_font_td = $title_font_input.$title_font_description;
+				$toggle_title_content .= "
+								<tr>
+									<th scope='row'>
+										$title_font_th
+									</th>
+									
+									<td>
+										$title_font_td
+									</td>
+								</tr>";
+				// title font size
+				$title_font_size_th = esc_html__('Title Font Size', 'toggle-showhide');
+				$title_font_size_name = 'title_font_size';
+				$title_font_size_value = esc_html__(stripslashes($options[$title_font_size_name]));
+				$title_font_size_input = "<input type='text' name='$title_font_size_name' value='$title_font_size_value' class='regular-text' />";
+				$title_font_size_description_text = sprintf(esc_html__('Set default title font size (e.g. %1$s1.2em%2$s or %1$s14px%2$s).', 'toggle-showhide'), '<strong>', '</strong>');
+				$title_font_size_description = "<p class='description'>$title_font_size_description_text</p>";
+				$title_font_size_td = $title_font_size_input.$title_font_size_description;
+				$toggle_title_content .= "
+								<tr>
+									<th scope='row'>
+										$title_font_size_th
+									</th>
+									
+									<td>
+										$title_font_size_td
+									</td>
+								</tr>";
+				// title font weight
+				$title_font_weight_th = esc_html__('Title Font Weight', 'toggle-showhide');
+				$title_font_weight_name = 'title_font_weight';
+				$title_font_weight_value = esc_html__(stripslashes($options[$title_font_weight_name]));
+				$title_font_weight_input = "<input type='text' name='$title_font_weight_name' value='$title_font_weight_value' class='small-text' />";
+				$title_font_weight_description_text = sprintf(esc_html__('Set default title font weight (e.g. %s900%s).', 'toggle-showhide'), '<strong>', '</strong>');
+				$title_font_weight_description = "<p class='description'>$title_font_weight_description_text</p>";
+				$title_font_weight_td = $title_font_weight_input.$title_font_weight_description;
+				$toggle_title_content .= "
+								<tr>
+									<th scope='row'>
+										$title_font_weight_th
+									</th>
+									
+									<td>
+										$title_font_weight_td
+									</td>
+								</tr>
+							</table>";
+								
+				// toggle for toggle title section
+				$toggle_title_atts = array(
+												'expand' => 1,
+												'width' => '100%',
+												'border' => 'none',
+												'image_location' => 'left',
+												'title' => 'Toggle Title',
+												'title_tag' => 'h2',
+												'title_color' => 'black',
+												'bgtitle' => 'none',
+												'title_font' => '-',
+												'title_font_size' => '1.3em; text-decoration: none',
+												'title_font_weight' => '-',
+												'text_colour' => 'black',
+												'bgtext' => 'none',
+												'text_font' => '-',
+												'text_font_size' => '1em; text-decoration: none',
+												'text_font_weight' => '-',
+											);
+				$tab_2 .= azrcrv_tsh_display_toggle_style1($toggle_title_atts, $toggle_title_content, $options);
+				
+				/*
+				toggle image section content
+				*/
+				// allow shortcodes
+				$disable_image_th = esc_html__('Disable Images?', 'toggle-showhide');
+				$disable_image_name = 'disable_image';
+				$disable_image_checked = ($options[$disable_image_name] == 1) ? 'checked' : '';
+				$disable_image_prompt = sprintf(esc_html__('Disable images in toggle title? Can be overridden using the %s parameter in toggle', 'toggle-showhide'), "<strong>$disable_image_name</strong>");
+				$disable_image_td = "<input name='$disable_image_name' type='checkbox' id='$disable_image_name' value='1' $disable_image_checked />";
+				$disable_image_td .= "<label for='$disable_image_name'>$disable_image_prompt</label>";
+				$toggle_image_content = "
+							<table class='form-table'>
+								<tr>
+									<th scope='row'>
+										$disable_image_th
+									</th>
+									
+									<td>
+										$disable_image_td
+									</td>
+								</tr>";
+				// image location
+				$image_location_th = esc_html__('Image Location', 'toggle-showhide');
+				$image_location_name = 'image_location';
+				$image_location_1_name = esc_html__("Left", "toggle-showhide");
+				$image_location_1_value = 'left';
+				$image_location_1_checked = ($options[$image_location_name] == 'left') ? 'selected' : '';
+				$image_location_1_option = "<option value='$image_location_1_value' $image_location_1_checked>$image_location_1_name</option>";
+				$image_location_2_name = esc_html__("Right", "toggle-showhide");
+				$image_location_2_value = 'right';
+				$image_location_2_checked = ($options[$image_location_name] == 'right') ? 'selected' : '';
+				$image_location_2_option = "<option value='$image_location_2_value' $image_location_2_checked>$image_location_2_name</option>";
+				$image_location_td = "<select name='$image_location_name'>$image_location_1_option$image_location_2_option</select>";
+				$toggle_image_content .= "
+								<tr>
+									<th scope='row'>
+										$image_location_th
+									</th>
+									
+									<td>
+										$image_location_td
+									</td>
+								</tr>";
+				
+				$image_open_th = esc_html__('Image Open', 'toggle-showhide');
+				$image_open_td = '';
+				$image_open_name = 'image_open';
+				$dir = plugin_dir_path(__FILE__).'/assets/images';
+				if (is_dir($dir)){
+					if ($directory = opendir($dir)){
+						while (($file = readdir($directory)) !== false){
+							$file = esc_html($file);
+							if ($file != '.' and $file != '..' and $file != 'index.php' and $file != 'Thumbs.db'){
+								$checked = '';
+								if ($file == $options[$image_open_name]){
+									$checked = 'checked=checked';
+								}
+								$image_open_td .= "<div style='display: inline-block; width: 75px; '><input type='radio' name='$image_open_name' value='$file' $checked />&nbsp;<img src='".plugin_dir_url(__FILE__)."assets/images/$file' name='$file' alt='$file' /></div>";
+							}
 						}
-						
-						$output = '<table class="form-table">
-						
-							<tr><th scope="row">'.__('Disable Images?', 'toggle-showhide').'</th><td>
-								<fieldset><legend class="screen-reader-text"><span>'.__('Disable images in toggle title?', 'toggle-showhide').'</span></legend>
-								<label for="disable_image"><input name="disable_image" type="checkbox" id="disable_image" value="1" '.$checked.' />'.__('Disable images in toggle title? Override setting by putting disable_image=0 in toggle.', 'toggle-showhide').'</label>
-								</fieldset>
-							</td></tr>
-							
-							<tr><th scope="row">'.__('Image Open', 'toggle-showhide').'</th><td style="background: #D3D3D3;">';
-							
-							$dir = plugin_dir_path(__FILE__).'/images';
-							if (is_dir($dir)){
-								if ($directory = opendir($dir)){
-									while (($file = readdir($directory)) !== false){
-										$file = esc_html($file);
-										if ($file != '.' and $file != '..' and $file != 'index.php' and $file != 'Thumbs.db'){
-											$checked = '';
-											if ($file == $options['image_open']){
-												$checked = 'checked=checked';
-											}
-											$output .= "<input type='radio' name='image_open' value='$file' $checked />&nbsp;<img src='".plugin_dir_url(__FILE__)."images/$file' name='$file' alt='$file' />&nbsp;&nbsp;";
-										}
-									}
-									closedir($directory);
+						closedir($directory);
+					}
+				}
+				$toggle_image_content .= "
+								<tr>
+									<th scope='row'>
+										$image_open_th
+									</th>
+									
+									<td>
+										$image_open_td
+									</td>
+								</tr>";
+				
+				$image_close_th = esc_html__('Image Close', 'toggle-showhide');
+				$image_close_td = '';
+				$image_close_name = 'image_close';
+				$dir = plugin_dir_path(__FILE__).'/assets/images';
+				if (is_dir($dir)){
+					if ($directory = opendir($dir)){
+						while (($file = readdir($directory)) !== false){
+							$file = esc_html($file);
+							if ($file != '.' and $file != '..' and $file != 'index.php' and $file != 'Thumbs.db'){
+								$checked = '';
+								if ($file == $options[$image_close_name]){
+									$checked = 'checked=checked';
 								}
+								$image_close_td .= "<div style='display: inline-block; width: 75px; '><input type='radio' name='$image_close_name' value='$file' $checked />&nbsp;<img src='".plugin_dir_url(__FILE__)."assets/images/$file' name='$file' alt='$file' /></div>";
 							}
-							
-							$output .= '</td></tr>
-							
-							<tr><th scope="row">'.__('Image Close', 'toggle-showhide').'</th><td style="background: #D3D3D3;">';
-							
-							$dir = plugin_dir_path(__FILE__).'/images';
-							if (is_dir($dir)){
-								if ($directory = opendir($dir)){
-									while (($file = readdir($directory)) !== false){
-										$file = esc_html($file);
-										if ($file != '.' and $file != '..' and $file != 'index.php' and $file != 'Thumbs.db'){
-											$checked = '';
-											if ($file == $options['image_close']){
-												$checked = 'checked=checked';
-											}
-											$output .= "<input type='radio' name='image_close' value='$file' $checked />&nbsp;<img src='".plugin_dir_url(__FILE__)."images/$file' name='$file' alt='$file' />&nbsp;&nbsp;";
-										}
-									}
-									closedir($directory);
-								}
-							}
-							
-							$output .= '</td></tr>';
-							
-							if ($options['image_location'] == 'left'){
-								$left_selected = 'selected';
-								$right_selected = '';
-							}else{
-								$left_selected = '';
-								$right_selected = 'selected';
-							}
-							
-							$output .= '<tr><th scope="row">'.__('Image Location', 'toggle-showhide').'</th><td>
-								<select name="image_location">
-									<option value="left" '.$left_selected.'>'.__("Left", "toggle-showhide").'</option>
-									<option value="right" '.$right_selected.'>'.__("Right", "toggle-showhide").'</option>
-								</select>
-								<p class="description">'.__('Select whether the toggle image should be displayed to the left or right.', 'toggle-showhide').'</p>
-							</td></tr>
-							
-						</table>';
-						
-						echo do_shortcode('[toggle title="'.__('Toggle Image', 'toggle-showhide').'" width="100%" border="none" image_location="right" title_tag="h2" title_color="black" bg_title="none" title_font_family="-" title_font_size="1.3em; text-decoration: none;"]'.$output.'[/toggle]');
-						
-						$output = '<table class="form-table">
-							
-							<tr><th scope="row"><label for="text_color">'.__('Text Color', 'toggle-showhide').'</label></th><td>
-								<input type="text" name="text_color" value="'.__(stripslashes($options['text_color'])).'" class="regular-text" />
-								<p class="description">'.__('Set default text color (e.g. #000)', 'toggle-showhide').'</p>
-							</td></tr>
-							
-							<tr><th scope="row"><label for="bg_text">'.__('Text Background Color', 'toggle-showhide').'</label></th><td>
-								<input type="text" name="bg_text" value="'.__(stripslashes($options['bg_text'])).'" class="regular-text" />
-								<p class="description">'.__('Set default text background color (e.g. #007FFF)', 'toggle-showhide').'</p>
-							</td></tr>
-							
-							<tr><th scope="row"><label for="text_font">'.__('Text Font Family', 'toggle-showhide').'</label></th><td>
-								<input type="text" name="text_font" value="'.__(stripslashes($options['text_font'])).'" class="large-text" />
-								<p class="description">'.__('Set default text font family (e.g. Arial, Calibri)', 'toggle-showhide').'</p>
-							</td></tr>
-							
-							<tr><th scope="row"><label for="text_font_size">'.__('Text Font Size', 'toggle-showhide').'</label></th><td>
-								<input type="text" name="text_font_size" value="'.__(stripslashes($options['text_font_size'])).'" class="small-text" />
-								<p class="description">'.__('Set default text font size (e.g. 1.2em or 14px)', 'toggle-showhide').'</p>
-							</td></tr>
-							
-							<tr><th scope="row"><label for="text_font_weight">'.__('Text Font Weight', 'toggle-showhide').'</label></th><td>
-								<input type="text" name="text_font_weight" value="'.__(stripslashes($options['text_font_weight'])).'" class="small-text" />
-								<p class="description">'.__('Set default text font weight (e.g. 600)', 'toggle-showhide').'</p>
-							</td></tr>
-							
-						</table>';
-						
-						echo do_shortcode('[toggle title="'.__('Toggle Text', 'toggle-showhide').'" width="100%" border="none" image_location="right" title_tag="h2" title_color="black" bg_title="none" title_font_family="-" title_font_size="1.3em; text-decoration: none;"]'.$output.'[/toggle]');
-						?>
-						
+						}
+						closedir($directory);
+					}
+				}
+				$toggle_image_content .= "
+								<tr>
+									<th scope='row'>
+										$image_close_th
+									</th>
+									
+									<td>
+										$image_close_td
+									</td>
+								</tr>
+							</table>";
+				
+				// toggle for toggle image section
+				$toggle_text_atts = array(
+												'width' => '100%',
+												'border' => 'none',
+												'image_location' => 'left',
+												'title' => 'Toggle Image',
+												'title_tag' => 'h2',
+												'title_color' => 'black',
+												'bgtitle' => 'none',
+												'title_font' => '-',
+												'title_font_size' => '1.3em; text-decoration: none',
+												'title_font_weight' => '-',
+												'text_colour' => 'black',
+												'bgtext' => 'none',
+												'text_font' => '-',
+												'text_font_size' => '1em; text-decoration: none',
+												'text_font_weight' => '-',
+											);
+				$tab_2 .= azrcrv_tsh_display_toggle_style1($toggle_text_atts, $toggle_image_content, $options);
+				
+				/*
+				toggle text section content
+				*/
+				// text colour
+				$text_color_th = esc_html__('Text Color', 'toggle-showhide');
+				$text_color_name = 'text_color';
+				$text_color_value = esc_html__(stripslashes($options[$text_color_name]));
+				$text_color_input = "<input type='text' name='$text_color_name' value='$text_color_value' class='regular-text' />";
+				$text_color_description_text = sprintf(esc_html__('Set default text color (e.g. %1$s#000%2$s or %1$sblack%2$s).', 'toggle-showhide'), '<strong>', '</strong>');
+				$text_color_description = "<p class='description'>$text_color_description_text</p>";
+				$text_color_td = $text_color_input.$text_color_description;
+				$toggle_text_content = "
+							<table class='form-table'>
+								<tr>
+									<th scope='row'>
+										$text_color_th
+									</th>
+									
+									<td>
+										$text_color_td
+									</td>
+								</tr>";
+				// text background colour
+				$text_background_color_th = esc_html__('Text Background Color', 'toggle-showhide');
+				$text_background_color_name = 'bg_text';
+				$text_background_color_value = esc_html__(stripslashes($options[$text_background_color_name]));
+				$text_background_color_input = "<input type='text' name='$text_background_color_name' value='$text_background_color_value' class='regular-text' />";
+				$text_background_color_description_text = sprintf(esc_html__('Set default text background color (e.g. %1$s#FFF%2$s or %1$swhite%2$s).', 'toggle-showhide'), '<strong>', '</strong>');
+				$text_background_color_description = "<p class='description'>$text_background_color_description_text</p>";
+				$text_background_color_td = $text_background_color_input.$text_background_color_description;
+				$toggle_text_content .= "
+								<tr>
+									<th scope='row'>
+										$text_background_color_th
+									</th>
+									
+									<td>
+										$text_background_color_td
+									</td>
+								</tr>";
+				// text font family
+				$text_font_th = esc_html__('Text Font Family', 'toggle-showhide');
+				$text_font_name = 'text_font';
+				$text_font_value = esc_html__(stripslashes($options[$text_font_name]));
+				$text_font_input = "<input type='text' name='$text_font_name' value='$text_font_value' class='large-text' />";
+				$text_font_description_text = sprintf(esc_html__('Set default text font family (e.g. %sArial, Calibri%s).', 'toggle-showhide'), '<strong>', '</strong>');
+				$text_font_description = "<p class='description'>$text_font_description_text</p>";
+				$text_font_td = $text_font_input.$text_font_description;
+				$toggle_text_content .= "
+								<tr>
+									<th scope='row'>
+										$text_font_th
+									</th>
+									
+									<td>
+										$text_font_td
+									</td>
+								</tr>";
+				// text font size
+				$text_font_size_th = esc_html__('Text Font Size', 'toggle-showhide');
+				$text_font_size_name = 'text_font_size';
+				$text_font_size_value = esc_html__(stripslashes($options[$text_font_size_name]));
+				$text_font_size_input = "<input type='text' name='$text_font_size_name' value='$text_font_size_value' class='regular-text' />";
+				$text_font_size_description_text = sprintf(esc_html__('Set default text font size (e.g. %1$s1.2em%2$s or %1$s14px%2$s).', 'toggle-showhide'), '<strong>', '</strong>');
+				$text_font_size_description = "<p class='description'>$text_font_size_description_text</p>";
+				$text_font_size_td = $text_font_size_input.$text_font_size_description;
+				$toggle_text_content .= "
+								<tr>
+									<th scope='row'>
+										$text_font_size_th
+									</th>
+									
+									<td>
+										$text_font_size_td
+									</td>
+								</tr>";
+				// text font weight
+				$text_font_weight_th = esc_html__('Text Font Weight', 'toggle-showhide');
+				$text_font_weight_name = 'text_font_weight';
+				$text_font_weight_value = esc_html__(stripslashes($options[$text_font_weight_name]));
+				$text_font_weight_input = "<input type='text' name='$text_font_weight_name' value='$text_font_weight_value' class='small-text' />";
+				$text_font_weight_description_text = sprintf(esc_html__('Set default text font weight (e.g. %s900%s).', 'toggle-showhide'), '<strong>', '</strong>');
+				$text_font_weight_description = "<p class='description'>$text_font_weight_description_text</p>";
+				$text_font_weight_td = $text_font_weight_input.$text_font_weight_description;
+				$toggle_text_content .= "
+								<tr>
+									<th scope='row'>
+										$text_font_weight_th
+									</th>
+									
+									<td>
+										$text_font_weight_td
+									</td>
+								</tr>
+							</table>";
+								
+				// toggle for toggle text section
+				$toggle_text_atts = array(
+												'width' => '100%',
+												'border' => 'none',
+												'image_location' => 'left',
+												'title' => 'Toggle Text',
+												'title_tag' => 'h2',
+												'title_color' => 'black',
+												'bgtitle' => 'none',
+												'title_font' => '-',
+												'title_font_size' => '1.3em; text-decoration: none',
+												'title_font_weight' => '-',
+												'text_colour' => 'black',
+												'bgtext' => 'none',
+												'text_font' => '-',
+												'text_font_size' => '1em; text-decoration: none',
+												'text_font_weight' => '-',
+											);
+				$tab_2 .= azrcrv_tsh_display_toggle_style1($toggle_text_atts, $toggle_text_content, $options);
+				
+				/*
+					Tab 3 = Stype 2 - Read More
+				*/
+				$tab_3 = "
+							<table class='form-table'>";
+				// instructions
+				$tab_3_th = sprintf(esc_html__('Use the %s tag within the content of the toggle for the placement of the %sRead more%s button.', 'toggle-showhide'), '<strong>&lt;!--readmore--&gt;</strong>', '<em>', '</em>');
+				$tab_3 .= "
+								<tr>
+									<th scope='row' colspan=2>
+										$tab_3_th
+									</th>
+								</tr>";
+				// read more
+				$default_style_1_th = esc_html__('Read More', 'toggle-showhide');
+				$default_style_1_name = 'style2-read-more';
+				$default_style_1_value = esc_html__(stripslashes($options['style2']['read-more']));
+				$default_style_1_input = "<input type='text' name='$default_style_1_name' value='$default_style_1_value' class='regular-text' />";
+				$default_style_1_description_text = esc_html__('Text to use on the read more button.', 'toggle-showhide');
+				$default_style_1_description = "<p class='description'>$default_style_1_description_text</p>";
+				$default_style_1_td = $default_style_1_input.$default_style_1_description;
+				$tab_3 .= "
+								<tr>
+									<th scope='row'>
+										$default_style_1_th
+									</th>
+									
+									<td>
+										$default_style_1_td
+									</td>
+								</tr>";
+				// read less
+				$default_style_2_th = esc_html__('Read Less', 'toggle-showhide');
+				$default_style_2_name = 'style2-read-less';
+				$default_style_2_value = esc_html__(stripslashes($options['style2']['read-less']));
+				$default_style_2_input = "<input type='text' name='$default_style_2_name' value='$default_style_2_value' class='regular-text' />";
+				$default_style_2_description_text = esc_html__('Text to use on the read less button.', 'toggle-showhide');
+				$default_style_2_description = "<p class='description'>$default_style_2_description_text</p>";
+				$default_style_2_td = $default_style_2_input.$default_style_2_description;
+				$tab_3 .= "
+								<tr>
+									<th scope='row'>
+										$default_style_2_th
+									</th>
+									
+									<td>
+										$default_style_2_td
+									</td>
+								</tr>
+							</table>";
+				?>
+				
+				<div id="azrcrv-tsh-tabs">
+					<ul>
+						<li><a href="#tabs-1"><?php esc_html_e('General', 'toggle-showhide'); ?></a></li>
+						<li><a href="#tabs-2"><?php esc_html_e('Style 1 - Toggle', 'toggle-showhide'); ?></a></li>
+						<li><a href="#tabs-3"><?php esc_html_e('Style 2 - Read More', 'toggle-showhide'); ?></a></li>
+					</ul>
+					
+					<div id="tabs-1">
+						<fieldset>
+							<legend class='screen-reader-text'>
+								</php esc_html_e('General Settings', 'toggle-showhide'); ?>
+							</legend>
+							<?php echo $tab_1; ?>
+						</fieldset>
 					</div>
 					
-					<div class="azrcrv-tsh-tab tabs-3 azrcrv-tsh-tab-invisible">
-						
-						<table class="form-table">
-							
-							<tr>
-								<td colspan=2 scope="row">
-									<p><?php printf(__('Use the %s tag within the content of the toggle for the placement of the <em>Read more</em> button.', 'toggle-showhide'), '<strong>&lt;!--readmore--&gt;</strong>'); ?></p>
-								</td>
-							</tr>
-							
-							<tr>
-								<th scope="row"><label for="style2-read-more"><?php _e('Read More', 'toggle-showhide'); ?></label></th><td>
-									<input type="text" name="style2-read-more" value="<?php echo esc_html(stripslashes($options['style2']['read-more'])); ?>" class="regular-text" />
-									<p class="description">
-										<?php _e('Text to use on the read more button.', 'toggle-showhide'); ?>
-									</p>
-								</td>
-							</tr>
-							
-							<tr><th scope="row"><label for="style2-read-less"><?php _e('Read Less', 'toggle-showhide'); ?></label></th><td>
-								<input type="text" name="style2-read-less" value="<?php echo esc_html(stripslashes($options['style2']['read-less'])); ?>" class="regular-text" />
-								<p class="description"><?php _e('Text to use on the read less button.', 'toggle-showhide'); ?></p>
-							</td></tr>
-							
-						</table>
-						
+					<div id="tabs-2">
+						<fieldset>
+							<legend class='screen-reader-text'>
+								</php esc_html_e('Style 1 - Toggle', 'toggle-showhide'); ?>
+							</legend>
+							<?php echo $tab_2; ?>
+						</fieldset>						
+					</div>
+					
+					<div id="tabs-3">
+						<fieldset>
+							<legend class='screen-reader-text'>
+								</php esc_html_e('Style 2 - Read More', 'toggle-showhide'); ?>
+							</legend>
+							<?php echo $tab_3; ?>
+						</fieldset>
 					</div>
 					
 				</div>
 				
-				<input type="submit" value="<?php _e('Submit', 'toggle-showhide'); ?>" class="button-primary"/>
+				<input type="submit" value="<?php esc_html_e('Submit', 'toggle-showhide'); ?>" class="button-primary"/>
 			</form>
 		</fieldset>
 	</div>
@@ -819,7 +1187,7 @@ function azrcrv_tsh_network_settings(){
 			
 			<?php if(isset($_GET['settings-updated'])){ ?>
 				<div class="notice notice-success is-dismissible">
-					<p><strong><?php _e('Network Settings have been saved.', 'toggle-showhide') ?></strong></p>
+					<p><strong><?php esc_html_e('Network Settings have been saved.', 'toggle-showhide') ?></strong></p>
 				</div>
 			<?php } ?>
 			<form method="post" action="admin-post.php">
@@ -832,80 +1200,80 @@ function azrcrv_tsh_network_settings(){
 				
 				<tr><td colspan=2>
 					<p><?php printf(esc_html__('To use the toggle in a widget, you will need a plugin (such as %s) which enables shortcodes in widgets.', 'toggle-showhide'), '<a href="https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/">Shortcodes in Widgets</a>'); ?></p>
-					<p><?php _e('If multisite is being used these options will be used when Use Multisite enabled in Site Options; if the options are blank the defaults in the plugin\'s CSS will be used.', 'toggle-showhide'); ?></p>
+					<p><?php esc_html_e('If multisite is being used these options will be used when Use Multisite enabled in Site Options; if the options are blank the defaults in the plugin\'s CSS will be used.', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="title_tag"><?php _e('Title Tag', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Title Tag', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="title_tag" value="<?php echo esc_html(stripslashes($options['title_tag'])); ?>" class="small-text" />
 					<p class="description"><?php printf(esc_html__('Set default title tag (e.g. h3); if not set, %s will be used.', 'toggle-showhide'), 'h3'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="title"><?php _e('Title', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Title', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="title" value="<?php echo esc_html(stripslashes($options['title'])); ?>" class="large-text" />
-					<p class="description"><?php _e('Set default title text (e.g. Click here to toggle show/hide)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default title text (e.g. Click here to toggle show/hide)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="width"><?php _e('Width', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Width', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="width" value="<?php echo esc_html(stripslashes($options['width'])); ?>" class="small-text" />
-					<p class="description"><?php _e('Set default width (e.g. 65% or 500px)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default width (e.g. 65% or 500px)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="border"><?php _e('Border', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Border', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="border" value="<?php echo esc_html(stripslashes($options['border'])); ?>" class="regular-text" />
-					<p class="description"><?php _e('Set default border (e.g. 1px solid #007FFF)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default border (e.g. 1px solid #007FFF)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="title_color"><?php _e('Title Color', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Title Color', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="title_color" value="<?php echo esc_html(stripslashes($options['title_color'])); ?>" class="regular-text" />
-					<p class="description"><?php _e('Set default title color (e.g. #000)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default title color (e.g. #000)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="bg_title"><?php _e('Title Background Color', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Title Background Color', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="bg_title" value="<?php echo esc_html(stripslashes($options['bg_title'])); ?>" class="regular-text" />
-					<p class="description"><?php _e('Set default title background color (e.g. 1px solid #007FFF)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default title background color (e.g. 1px solid #007FFF)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="title_font"><?php _e('Title Font Family', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Title Font Family', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="title_font" value="<?php echo esc_html(stripslashes($options['title_font'])); ?>" class="large-text" />
-					<p class="description"><?php _e('Set default title font family (e.g. Arial, Calibri)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default title font family (e.g. Arial, Calibri)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="title_font_size"><?php _e('Title Font Size', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Title Font Size', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="title_font_size" value="<?php echo esc_html(stripslashes($options['title_font_size'])); ?>" class="small-text" />
-					<p class="description"><?php _e('Set default title font size (e.g. 1.2em or 14px)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default title font size (e.g. 1.2em or 14px)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="title_font_weight"><?php _e('Title Font Weight', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Title Font Weight', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="title_font_weight" value="<?php echo esc_html(stripslashes($options['title_font_weight'])); ?>" class="small-text" />
-					<p class="description"><?php _e('Set default title font weight (e.g. 600)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default title font weight (e.g. 600)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="text_color"><?php _e('Text Color', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Text Color', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="text_color" value="<?php echo esc_html(stripslashes($options['text_color'])); ?>" class="regular-text" />
-					<p class="description"><?php _e('Set default text color (e.g. #000)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default text color (e.g. #000)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="bg_text"><?php _e('Text Background Color', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Text Background Color', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="bg_text" value="<?php echo esc_html(stripslashes($options['bg_text'])); ?>" class="regular-text" />
-					<p class="description"><?php _e('Set default bg_text (e.g. 1px solid #007FFF)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default bg_text (e.g. 1px solid #007FFF)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="text_font"><?php _e('Text Font Family', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Text Font Family', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="text_font" value="<?php echo esc_html(stripslashes($options['text_font'])); ?>" class="large-text" />
-					<p class="description"><?php _e('Set default text font family (e.g. Arial, Calibri)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default text font family (e.g. Arial, Calibri)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="text_font_size"><?php _e('Text Font Size', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Text Font Size', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="text_font_size" value="<?php echo esc_html(stripslashes($options['text_font_size'])); ?>" class="small-text" />
-					<p class="description"><?php _e('Set default text font size (e.g. 1.2em or 14px)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default text font size (e.g. 1.2em or 14px)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><label for="text_font_weight"><?php _e('Text Font Weight', 'toggle-showhide'); ?></label></th><td>
+				<tr><th scope="row"><?php esc_html_e('Text Font Weight', 'toggle-showhide'); ?></th><td>
 					<input type="text" name="text_font_weight" value="<?php echo esc_html(stripslashes($options['text_font_weight'])); ?>" class="small-text" />
-					<p class="description"><?php _e('Set default text font weight (e.g. 600)', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Set default text font weight (e.g. 600)', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><?php _e('Image Open', 'toggle-showhide'); ?></th><td style='background: #D3D3D3;'>
+				<tr><th scope="row"><?php esc_html_e('Image Open', 'toggle-showhide'); ?></th><td style='background: #D3D3D3;'>
 				<?php
 				$dir = plugin_dir_path(__FILE__).'/images';
 				if (is_dir($dir)){
@@ -920,7 +1288,7 @@ function azrcrv_tsh_network_settings(){
 				}
 				?>
 				</td></tr>
-				<tr><th scope="row"><?php _e('Image Close', 'toggle-showhide'); ?></th><td style='background: #D3D3D3;'>
+				<tr><th scope="row"><?php esc_html_e('Image Close', 'toggle-showhide'); ?></th><td style='background: #D3D3D3;'>
 				<?php
 				$dir = plugin_dir_path(__FILE__).'/images';
 				if (is_dir($dir)){
@@ -936,28 +1304,28 @@ function azrcrv_tsh_network_settings(){
 				?>
 				</td></tr>
 				
-				<tr><th scope="row"><?php _e('Image Location', 'toggle-showhide'); ?></th><td>
+				<tr><th scope="row"><?php esc_html_e('Image Location', 'toggle-showhide'); ?></th><td>
 					<select name="image_location">
-						<option value="left" <?php if($options['image_location'] == 'left'){ echo ' selected="selected"'; } ?>><?php _e("Left", "toggle-showhide"); ?></option>
-						<option value="right" <?php if($options['image_location'] == 'right'){ echo ' selected="selected"'; } ?>><?php _e("Right", "toggle-showhide"); ?></option>
+						<option value="left" <?php if($options['image_location'] == 'left'){ echo ' selected="selected"'; } ?>><?php esc_html_e("Left", "toggle-showhide"); ?></option>
+						<option value="right" <?php if($options['image_location'] == 'right'){ echo ' selected="selected"'; } ?>><?php esc_html_e("Right", "toggle-showhide"); ?></option>
 					</select>
-					<p class="description"><?php _e('Select whether the toggle image should be displayed to the left or right.', 'toggle-showhide'); ?></p>
+					<p class="description"><?php esc_html_e('Select whether the toggle image should be displayed to the left or right.', 'toggle-showhide'); ?></p>
 				</td></tr>
 				
-				<tr><th scope="row"><?php _e('Disable Images?', 'toggle-showhide'); ?></th><td>
-					<fieldset><legend class="screen-reader-text"><span><?php _e('Disable images in toggle title?', 'toggle-showhide'); ?></span></legend>
-					<label for="disable_image"><input name="disable_image" type="checkbox" id="disable_image" value="1" <?php checked('1', $options['disable_image']); ?> /><?php _e('Disable images in toggle title? Override setting by putting disable_image=0 in toggle.', 'toggle-showhide'); ?></label>
+				<tr><th scope="row"><?php esc_html_e('Disable Images?', 'toggle-showhide'); ?></th><td>
+					<fieldset><legend class="screen-reader-text"><span><?php esc_html_e('Disable images in toggle title?', 'toggle-showhide'); ?></span></legend>
+					<label for="disable_image"><input name="disable_image" type="checkbox" id="disable_image" value="1" <?php checked('1', $options['disable_image']); ?> /><?php esc_html_e('Disable images in toggle title? Override setting by putting disable_image=0 in toggle.', 'toggle-showhide'); ?></label>
 					</fieldset>
 				</td></tr>
 				
-				<tr><th scope="row"><?php _e('Allow Shortcodes?', 'toggle-showhide'); ?></th><td>
-					<fieldset><legend class="screen-reader-text"><span><?php _e('Allow shortcodes within toggle?', 'toggle-showhide'); ?></span></legend>
-					<label for="allow_shortcodes"><input name="allow_shortcodes" type="checkbox" id="allow_shortcodes" value="1" <?php checked('1', $options['allow_shortcodes']); ?> /><?php _e('Allow shortcodes within toggle?', 'toggle-showhide'); ?></label>
+				<tr><th scope="row"><?php esc_html_e('Allow Shortcodes?', 'toggle-showhide'); ?></th><td>
+					<fieldset><legend class="screen-reader-text"><span><?php esc_html_e('Allow shortcodes within toggle?', 'toggle-showhide'); ?></span></legend>
+					<label for="allow_shortcodes"><input name="allow_shortcodes" type="checkbox" id="allow_shortcodes" value="1" <?php checked('1', $options['allow_shortcodes']); ?> /><?php esc_html_e('Allow shortcodes within toggle?', 'toggle-showhide'); ?></label>
 					</fieldset>
 				</td></tr>
 				
 				</table>
-				<input type="submit" value="<?php _e('Submit', 'toggle-showhide'); ?>" class="button-primary"/>
+				<input type="submit" value="<?php esc_html_e('Submit', 'toggle-showhide'); ?>" class="button-primary"/>
 			</form>
 		</fieldset>
 	</div>
