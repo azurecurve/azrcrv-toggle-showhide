@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Toggle Show/Hide
  * Description: Toggle shortcode can be used to show/hide content.
- * Version: 1.5.0
+ * Version: 1.6.0
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
@@ -263,8 +263,8 @@ function azrcrv_tsh_get_option($option_name){
 						,'image_location' => 'left'
 						,'default-style' => 1
 						,'style2' => array(
-											'read-more' => __('Read more...', 'toggle-showhide')
-											,'read-less' => __('Read less...', 'toggle-showhide')
+											'read-more' => esc_html__('Read more...', 'toggle-showhide')
+											,'read-less' => esc_html__('Read less...', 'toggle-showhide')
 											,'button' => array(
 																	'background-color' => '#FFF'
 																	,'color' => '#007FFF'
@@ -368,6 +368,7 @@ function azrcrv_tsh_display_options(){
 					esc_html_e(get_admin_page_title());
 				?>
 			</h1>
+			
 			<?php if(isset($_GET['settings-updated'])){ ?>
 				<div class="notice notice-success is-dismissible">
 					<p><strong><?php esc_html_e('Settings have been saved.', 'toggle-showhide') ?></strong></p>
@@ -379,10 +380,6 @@ function azrcrv_tsh_display_options(){
 				
 				<!-- Adding security through hidden referrer field -->
 				<?php wp_nonce_field('azrcrv-tsh', 'azrcrv-tsh-nonce'); ?>
-				
-				<p>
-					<?php printf(/* translators: %s is a plugin name. */ __('To use the toggle in a widget, you will need a plugin (such as %s) which enables shortcodes in widgets.', 'toggle-showhide'), '<a href="https://development.azurecurve.co.uk/classicpress-plugins/shortcodes-in-widgets/">Shortcodes in Widgets</a>'); ?>
-				</p>
 				
 				<?php
 				/*
@@ -447,8 +444,7 @@ function azrcrv_tsh_display_options(){
 										$default_style_td
 									</td>
 								</tr>
-							</table>
-						</fieldset>";
+							</table>";
 				
 				/*
 					Tab 2 = Stype 1 - Toggle
@@ -946,48 +942,68 @@ function azrcrv_tsh_display_options(){
 							</table>";
 				?>
 				
-				<div id="azrcrv-tsh-tabs">
-					<ul>
-						<li><a href="#tabs-1"><?php esc_html_e('General', 'toggle-showhide'); ?></a></li>
-						<li><a href="#tabs-2"><?php esc_html_e('Style 1 - Toggle', 'toggle-showhide'); ?></a></li>
-						<li><a href="#tabs-3"><?php esc_html_e('Style 2 - Read More', 'toggle-showhide'); ?></a></li>
+				<?php
+				$tab_1_label = esc_html__('General', 'toggle-showhide');
+				$tab_2_label = esc_html__('Style 1 - Toggle', 'toggle-showhide');
+				$tab_3_label = esc_html__('Style 2 - Read More', 'toggle-showhide');
+				?>
+				<div id="tabs" class="ui-tabs">
+					<ul class="ui-tabs-nav ui-widget-header" role="tablist">
+						<li class="ui-state-default ui-state-active" aria-controls="tab-panel-1" aria-labelledby="tab-1" aria-selected="true" aria-expanded="true" role="tab">
+							<a id="tab-1" class="ui-tabs-anchor" href="#tab-panel-1"><?php echo $tab_1_label; ?></a>
+						</li>
+						<li class="ui-state-default" aria-controls="tab-panel-2" aria-labelledby="tab-2" aria-selected="false" aria-expanded="false" role="tab">
+							<a id="tab-2" class="ui-tabs-anchor" href="#tab-panel-2"><?php echo $tab_2_label; ?></a>
+						</li>
+						<li class="ui-state-default" aria-controls="tab-panel-3" aria-labelledby="tab-3" aria-selected="false" aria-expanded="false" role="tab">
+							<a id="tab-3" class="ui-tabs-anchor" href="#tab-panel-3"><?php echo $tab_3_label; ?></a>
+						</li>
 					</ul>
-					
-					<div id="tabs-1">
-						<fieldset>
-							<legend class='screen-reader-text'>
-								</php esc_html_e('General Settings', 'toggle-showhide'); ?>
-							</legend>
-							<?php echo $tab_1; ?>
-						</fieldset>
+					<div id="tab-panel-1" class="ui-tabs-scroll" role="tabpanel" aria-hidden="false">
+						<?php echo $tab_1; ?>
 					</div>
-					
-					<div id="tabs-2">
-						<fieldset>
-							<legend class='screen-reader-text'>
-								</php esc_html_e('Style 1 - Toggle', 'toggle-showhide'); ?>
-							</legend>
-							<?php echo $tab_2; ?>
-						</fieldset>						
+					<div id="tab-panel-2" class="ui-tabs-scroll ui-tabs-hidden" role="tabpanel" aria-hidden="true">
+						<?php echo $tab_2; ?>
 					</div>
-					
-					<div id="tabs-3">
-						<fieldset>
-							<legend class='screen-reader-text'>
-								</php esc_html_e('Style 2 - Read More', 'toggle-showhide'); ?>
-							</legend>
-							<?php echo $tab_3; ?>
-						</fieldset>
+					<div id="tab-panel-3" class="ui-tabs-scroll ui-tabs-hidden" role="tabpanel" aria-hidden="true">
+						<?php echo $tab_3; ?>
 					</div>
-					
 				</div>
 				
 				<input type="submit" value="<?php esc_html_e('Submit', 'toggle-showhide'); ?>" class="button-primary"/>
 			</form>
-		</fieldset>
+	</div>
+		
+	<div>
+		<p>
+			<label for="additional-plugins">
+				azurecurve <?php esc_html_e('has the following plugin which allow toggles to be used in widgets:', 'flags'); ?>
+			</label>
+			<ul class='azrcrv-plugin-index'>
+				<li>
+					<?php
+					if (azrcrv_tsh_is_plugin_active('azrcrv-shortcodes-in-widgets/azrcrv-shortcodes-in-widgets.php')){
+						echo "<a href='admin.php?page=azrcrv-siw' class='azrcrv-plugin-index'>Shortcodes in Widgets</a>";
+					}else{
+						echo "<a href='https://development.azurecurve.co.uk/classicpress-plugins/shortcodes-in-widgets/' class='azrcrv-plugin-index'>Shortcodes in Widgets</a>";
+					}
+					?>
+				</li>
+			</ul>
+		</p>
 	</div>
 	
 	<?php
+}
+
+/**
+ * Check if other plugin active.
+ *
+ * @since 1.6.0
+ *
+ */
+function azrcrv_tsh_is_plugin_active($plugin){
+    return in_array($plugin, (array) get_option('active_plugins', array()));
 }
 
 /**
