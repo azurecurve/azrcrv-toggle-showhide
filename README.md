@@ -15,8 +15,8 @@ Apply a parameter of `style=1/2` to select the the type of toggle (e.g. `[toggle
 
 The following parameters can be used for the standard toggle:
 	* `title` -  default title text of the toggle.
-	* `expand` - set to 1 to display toggle open; 0 to display toggle closed. e.g. [toggle expand=1]content[/toggle]
-	* `width` - override width from settings. e.g. [toggle width=75%]content[/toggle]
+	* `expand` - set to 1 to display toggle open; 0 to display toggle closed. e.g. `[toggle expand=1]content[/toggle]`
+	* `width` - override width from settings. e.g. `[toggle width=75%]content[/toggle]`
 	* `border` - override border from settings. e.g. [toggle border='none']content[/toggle] or [toggle border='1px dashed #FF0000']content[/toggle]
 	* `title_color` - override title color from settings. e.g. [toggle title_color='#000']content[/toggle]
 	* `title_font` - override title font family from settings. e.g. [toggle title_font='Arial, Calibri']content[/toggle]
