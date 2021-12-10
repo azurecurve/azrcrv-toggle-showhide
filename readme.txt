@@ -34,22 +34,22 @@ Two toggle styles are supported:
 Apply a parameter of `style=1/2` to select the the type of toggle (e.g. `[toggle style=2]content[/toggle]`); a default parameter can be set so a style only needs to be defined if the othe style toggle is required.
 
 The following parameters can be used for the standard toggle:
-	* `title` -  default title text of the toggle.
-	* `expand` - set to 1 to display toggle open; 0 to display toggle closed. e.g. [toggle expand=1]content[/toggle]
-	* `width` - override width from settings. e.g. [toggle width=75%]content[/toggle]
-	* `border` - override border from settings. e.g. [toggle border='none']content[/toggle] or [toggle border='1px dashed #FF0000']content[/toggle]
-	* `title_color` - override title color from settings. e.g. [toggle title_color='#000']content[/toggle]
-	* `title_font` - override title font family from settings. e.g. [toggle title_font='Arial, Calibri']content[/toggle]
-	* `title_font_size` - override title font size from settings. e.g. [toggle title_font_size='14px']content[/toggle]
-	* `title_font_weight` - override title font weight from settings. e.g. [toggle title_font_weight=600]content[/toggle]
-	* `bgtitle` - override text background colour from settings. e.g. [toggle bgtitle='#007FFF']content[/toggle]
-	* `text_color` - override text colour from settings. e.g. [toggle bgtext='#000']content[/toggle]
-	* `text_font` - override text font family from settings. e.g. [toggle text_font='Arial, Calibri']content[/toggle]
-	* `text_font_size ` - override text font size from settings. e.g. [toggle text_font_size='14px']content[/toggle]
-	* `text_font_weight ` - override text font weight from settings. e.g. [toggle text_font_weight=600]content[/toggle]
-	* `bgtext` - override text background colour from settings. e.g. [toggle bgtext='#000']content[/toggle]
-	* `disable_image` - set to 1 to disable toggle image. e.g. [toggle disable_image=1]content[/toggle]
-	* `image_location` - set to left or right to override default. e.g. [toggle image_location='right']content[/toggle]
+ * `title` -  default title text of the toggle.
+ * `expand` - set to 1 to display toggle open; 0 to display toggle closed. e.g. `[toggle expand=1]content[/toggle]`
+ * `width` - override width from settings. e.g. `[toggle width=75%]content[/toggle]`
+ * `border` - override border from settings. e.g. `[toggle border='none']content[/toggle] or `[toggle border='1px dashed #FF0000']content[/toggle]`
+ * `title_color` - override title color from settings. e.g. `[toggle title_color='#000']content[/toggle]`
+ * `title_font` - override title font family from settings. e.g. `[toggle title_font='Arial, Calibri']content[/toggle]`
+ * `title_font_size` - override title font size from settings. e.g. `[toggle title_font_size='14px']content[/toggle]`
+ * `title_font_weight` - override title font weight from settings. e.g. `[toggle title_font_weight=600]content[/toggle]`
+ * `bgtitle` - override text background colour from settings. e.g. `[toggle bgtitle='#007FFF']content[/toggle]`
+ * `text_color` - override text colour from settings. e.g. `[toggle bgtext='#000']content[/toggle]`
+ * `text_font` - override text font family from settings. e.g. `[toggle text_font='Arial, Calibri']content[/toggle]`
+ * `text_font_size ` - override text font size from settings. e.g. `[toggle text_font_size='14px']content[/toggle]`
+ * `text_font_weight ` - override text font weight from settings. e.g. `[toggle text_font_weight=600]content[/toggle]`
+ * `bgtext` - override text background colour from settings. e.g. `[toggle bgtext='#000']content[/toggle]`
+ * `disable_image` - set to 1 to disable toggle image. e.g. `[toggle disable_image=1]content[/toggle]`
+ * `image_location` - set to left or right to override default. e.g. `[toggle image_location='right']content[/toggle]`
 
 Select toggle image in options or network options; allows different sites in a network to use different images.
 
