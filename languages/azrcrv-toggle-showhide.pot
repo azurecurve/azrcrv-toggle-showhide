@@ -1,0 +1,372 @@
+# Copyright (C) 2019 azurecurve
+# This file is distributed under the same license as the Toggle Show/Hide plugin.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Toggle Show/Hide\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/azrcrv-toggle-showhide\n"
+"POT-Creation-Date: 2021-12-27 18:23+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: translate@azurecurve.co.uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Domain: toggle-showhide\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: azrcrv-toggle-showhide.php:266
+msgid "Read more..."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:267
+msgid "Read less..."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:323
+msgid "Settings"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:340 azrcrv-toggle-showhide.php:1174
+msgid "Toggle Show/Hide Settings"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:341 azrcrv-toggle-showhide.php:1175
+msgid "Toggle Show/Hide"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:355
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:374
+msgid "Settings have been saved."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:393
+msgid "Use multisite options?"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:396
+msgid "Use multisite options instead of the site options below?"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:411 azrcrv-toggle-showhide.php:1337
+msgid "Allow Shortcodes?"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:414 azrcrv-toggle-showhide.php:1338
+#: azrcrv-toggle-showhide.php:1339
+msgid "Allow shortcodes within toggle?"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:428
+msgid "Default Style"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:430 azrcrv-toggle-showhide.php:947
+msgid "Style 1 - Toggle"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:433 azrcrv-toggle-showhide.php:948
+msgid "Style 2 - Read More"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:455
+msgid "If the options are blank then the defaults in the plugin's CSS will be used."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:463 azrcrv-toggle-showhide.php:1232
+msgid "Width"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:467
+#, php-format
+msgid "Set default width (e.g. %1$s65&#37;%2$s or %1$s500px%2$s)."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:481 azrcrv-toggle-showhide.php:1237
+msgid "Border"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:485
+#, php-format
+msgid "Set default border (e.g. %1$s1px solid #007FFF%2$s or %1$snone%2$s)."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:503 azrcrv-toggle-showhide.php:1222
+msgid "Title Tag"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:507
+#, php-format
+msgid "Set default title tag (e.g. %sh3%s); if not set, %s will be used."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:522 azrcrv-toggle-showhide.php:1227
+msgid "Title"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:526
+#, php-format
+msgid "Set default title text (e.g. %sClick here to toggle show/hide%s)."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:540 azrcrv-toggle-showhide.php:1242
+msgid "Title Color"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:544
+#, php-format
+msgid "Set default title color (e.g. %1$s#000%2$s or %1$sblack%2$s)."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:558 azrcrv-toggle-showhide.php:1247
+msgid "Title Background Color"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:562
+#, php-format
+msgid "Set default title background color (e.g. %1$s#FFF%2$s or %1$swhite%2$s)."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:576 azrcrv-toggle-showhide.php:1252
+msgid "Title Font Family"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:580
+#, php-format
+msgid "Set default title font family (e.g. %sArial, Calibri%s)."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:594 azrcrv-toggle-showhide.php:1257
+msgid "Title Font Size"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:598
+#, php-format
+msgid "Set default title font size (e.g. %1$s1.2em%2$s or %1$s14px%2$s)."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:612 azrcrv-toggle-showhide.php:1262
+msgid "Title Font Weight"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:616
+#, php-format
+msgid "Set default title font weight (e.g. %s900%s)."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:656 azrcrv-toggle-showhide.php:1331
+msgid "Disable Images?"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:659
+#, php-format
+msgid "Disable images in toggle title? Can be overridden using the %s parameter in toggle"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:674 azrcrv-toggle-showhide.php:1323
+msgid "Image Location"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:676 azrcrv-toggle-showhide.php:1325
+msgid "Left"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:680 azrcrv-toggle-showhide.php:1326
+msgid "Right"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:696 azrcrv-toggle-showhide.php:1292
+msgid "Image Open"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:726 azrcrv-toggle-showhide.php:1307
+msgid "Image Close"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:781 azrcrv-toggle-showhide.php:1267
+msgid "Text Color"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:785
+#, php-format
+msgid "Set default text color (e.g. %1$s#000%2$s or %1$sblack%2$s)."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:800 azrcrv-toggle-showhide.php:1272
+msgid "Text Background Color"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:804
+#, php-format
+msgid "Set default text background color (e.g. %1$s#FFF%2$s or %1$swhite%2$s)."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:818 azrcrv-toggle-showhide.php:1277
+msgid "Text Font Family"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:822
+#, php-format
+msgid "Set default text font family (e.g. %sArial, Calibri%s)."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:836 azrcrv-toggle-showhide.php:1282
+msgid "Text Font Size"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:840
+#, php-format
+msgid "Set default text font size (e.g. %1$s1.2em%2$s or %1$s14px%2$s)."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:854 azrcrv-toggle-showhide.php:1287
+msgid "Text Font Weight"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:858
+#, php-format
+msgid "Set default text font weight (e.g. %s900%s)."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:899
+#, php-format
+msgid "Use the %s tag within the content of the toggle for the placement of the %sRead more%s button."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:907
+msgid "Read More"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:911
+msgid "Text to use on the read more button."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:925
+msgid "Read Less"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:929
+msgid "Text to use on the read less button."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:946
+msgid "General"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:973 azrcrv-toggle-showhide.php:1344
+msgid "Submit"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:980
+msgid "has the following plugin which allow toggles to be used in widgets:"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1018 azrcrv-toggle-showhide.php:1191
+#: azrcrv-toggle-showhide.php:1359
+msgid "You do not have permissions to perform this action"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1206
+msgid "Network Settings have been saved."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1218
+#, php-format
+msgid "To use the toggle in a widget, you will need a plugin (such as %s) which enables shortcodes in widgets."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1219
+msgid "If multisite is being used these options will be used when Use Multisite enabled in Site Options; if the options are blank the defaults in the plugin's CSS will be used."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1224
+#, php-format
+msgid "Set default title tag (e.g. h3); if not set, %s will be used."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1229
+msgid "Set default title text (e.g. Click here to toggle show/hide)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1234
+#, php-format
+msgid "Set default width (e.g. 65% or 500px)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1239
+msgid "Set default border (e.g. 1px solid #007FFF)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1244
+msgid "Set default title color (e.g. #000)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1249
+msgid "Set default title background color (e.g. 1px solid #007FFF)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1254
+msgid "Set default title font family (e.g. Arial, Calibri)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1259
+msgid "Set default title font size (e.g. 1.2em or 14px)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1264
+msgid "Set default title font weight (e.g. 600)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1269
+msgid "Set default text color (e.g. #000)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1274
+msgid "Set default bg_text (e.g. 1px solid #007FFF)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1279
+msgid "Set default text font family (e.g. Arial, Calibri)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1284
+msgid "Set default text font size (e.g. 1.2em or 14px)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1289
+msgid "Set default text font weight (e.g. 600)"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1328
+msgid "Select whether the toggle image should be displayed to the left or right."
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1332
+msgid "Disable images in toggle title?"
+msgstr ""
+
+#: azrcrv-toggle-showhide.php:1333
+msgid "Disable images in toggle title? Override setting by putting disable_image=0 in toggle."
+msgstr ""
+
+#: libraries/updateclient/UpdateClient.class.php:191
+msgid "Compatible up to:"
+msgstr ""
+
+#: libraries/updateclient/UpdateClient.class.php:192
+msgid "Reviews"
+msgstr ""
+
+#: libraries/updateclient/UpdateClient.class.php:193
+msgid "Read all reviews"
+msgstr ""
+
+#: libraries/updateclient/UpdateClient.class.php:383
+msgid "View details"
+msgstr ""
