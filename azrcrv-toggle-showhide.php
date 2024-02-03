@@ -1,14 +1,18 @@
 <?php
 /**
  * ------------------------------------------------------------------------------
- * Plugin Name: Toggle Show/Hide
- * Description: Toggle shortcode can be used to show/hide content.
- * Version: 1.6.3
- * Author: azurecurve
- * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
- * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
- * Text Domain: toggle-showhide
- * Domain Path: /languages
+ * Plugin Name:		Toggle Show/Hide
+ * Description:		Toggle shortcode can be used to show/hide content.
+ * Version:			1.6.4
+ * Requires CP:		1.0
+ * Author:			azurecurve
+ * Author URI:		https://development.azurecurve.co.uk/classicpress-plugins/
+ * Plugin URI:		https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
+ * Donate link:		https://development.azurecurve.co.uk/support-development/
+ * Text Domain:		toggle-showhide
+ * Domain Path:		/languages
+ * License:			GPLv2 or later
+ * License URI:		http://www.gnu.org/licenses/gpl-2.0.html
  * ------------------------------------------------------------------------------
  * This is free software released under the terms of the General Public License,
  * version 2, or later. It is distributed WITHOUT ANY WARRANTY; without even the
