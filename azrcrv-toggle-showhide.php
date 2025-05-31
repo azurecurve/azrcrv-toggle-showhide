@@ -3,8 +3,9 @@
  * ------------------------------------------------------------------------------
  * Plugin Name:		Toggle Show/Hide
  * Description:		Toggle shortcode can be used to show/hide content.
- * Version:			1.6.4
+ * Version:			1.6.5
  * Requires CP:		1.0
+ * Requires PHP:	7.4
  * Author:			azurecurve
  * Author URI:		https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI:		https://development.azurecurve.co.uk/classicpress-plugins/toggle-showhide/
