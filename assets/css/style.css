@@ -1,35 +1,41 @@
 /* toggle
 ----------------------------------------------- */
 .azrcrv-tsh-toggle, .azrcrv-tsh-toggle-open, .azrcrv-tsh-toggle-active, .azrcrv-tsh-toggle-open-active {
-    margin: 5px 0px 0px 0px !important;
+	margin: 5px 0px 0px 0px !important;
 	border: 1px solid #007fff;
-    font-weight:600;
-    font-size: 14px;
-    padding: 10px 10px 10px 30px;
-    background-repeat: no-repeat;
+	font-weight: 600;
+	font-size: 14px;
+	padding: 10px 10px 10px 30px;
+	background-repeat: no-repeat;
 	background-position: 10px 10px;
 	user-select: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
+	cursor: pointer;
 }
 .azrcrv-tsh-toggle {
-    background-image: url('images/azure-plus.png') ;
+	/* Bug fix: this previously referenced images/azure-plus.png (hyphen),
+	   which does not exist - the shipped file is azure_plus.png
+	   (underscore) - so the default open icon silently 404'd unless an
+	   admin had explicitly picked a custom icon on the Style 1 tab. */
+	background-image: url('../images/azure_plus.png');
 }
 .azrcrv-tsh-toggle-open {
-    background-image: url('images/azure-plus.png') !important;
+	background-image: url('../images/azure_plus.png') !important;
 }
 .azrcrv-tsh-toggle-active {
-    background-image: url('images/azure-minus.png') !important;
+	background-image: url('../images/azure_minus.png') !important;
 }
 .azrcrv-tsh-toggle-open-active {
-    background-image: url('images/azure-minus.png');
+	background-image: url('../images/azure_minus.png');
 }
-.azrcrv-tsh-toggle a,.azrcrv-tsh-toggle-open a, .azrcrv-tsh-toggle-open-active a {
+.azrcrv-tsh-toggle a, .azrcrv-tsh-toggle-open a, .azrcrv-tsh-toggle-open-active a {
 	color: #000;
+	text-decoration: none;
 }
 .azrcrv-tsh-toggle-container, .azrcrv-tsh-toggle-container-open {
 	margin: auto;
-    margin-bottom: 15px !important;
+	margin-bottom: 15px !important;
 	padding: 5px 15px;
 	border-right: 1px solid #007fff;
 	border-bottom: 1px solid #007fff;
@@ -37,11 +43,15 @@
 	overflow: auto;
 }
 
-.azrcrv-tsh-readmore-container{
+.azrcrv-tsh-container {
 }
-.azrcrv-tsh-readmore{
+.azrcrv-tsh-readmore {
 }
-.azrcrv-tsh-readmore-button{
+.azrcrv-tsh-readmore-button {
 	text-decoration: none;
 	float: right;
+	display: inline-block;
+	padding: 4px 10px;
+	border-radius: 3px;
+	cursor: pointer;
 }
